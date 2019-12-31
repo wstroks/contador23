@@ -181,28 +181,7 @@
 
 @push('scripts')
 
-<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyB3HFSg0Waib-2tHwSvDtpYMj728YtoPv8",
-    authDomain: "contador-83742.firebaseapp.com",
-    databaseURL: "https://contador-83742.firebaseio.com",
-    projectId: "contador-83742",
-    storageBucket: "contador-83742.appspot.com",
-    messagingSenderId: "646545051390",
-    appId: "1:646545051390:web:9208831f0752d3c8941faf",
-    measurementId: "G-S17TSMC8T4"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
     <script>
         $(document).ready(function() {
             // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
