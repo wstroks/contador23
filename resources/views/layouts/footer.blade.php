@@ -19,12 +19,13 @@
                 </ul>
             </nav>
             <div class="credits ml-auto">
+                <!--
                 <span class="copyright">
                     ©
                     <script>
                         document.write(new Date().getFullYear())
                     </script>{{ __(', criado') }}{{ __(' por ') }}<a class="@if(Auth::guest()) text-white @endif"  target="_blank">{{ __('Lucas') }}</a>{{ __(' e ') }}<a class="@if(Auth::guest()) text-white @endif" target="_blank" >{{ __('Washington') }}</a>
-                </span>
+                </span> !-->
             </div>
         </div>
     </div>

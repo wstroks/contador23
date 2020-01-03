@@ -21,7 +21,7 @@
   firebase.initializeApp(firebaseConfig);
  
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 
 <!--
 <div class="fixed-plugin">

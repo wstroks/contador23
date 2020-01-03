@@ -1,4 +1,4 @@
-
+<!--
 <script>
     $(document).ready(function () {
         $('#facebook').sharrre({
@@ -74,7 +74,7 @@
             console.log('Facebook Track Error:', err);
         }
     });
-</script>
+</script> !-->
 <script>
     $(document).ready(function () {
         $sidebar = $('.sidebar');

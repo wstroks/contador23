@@ -48,10 +48,10 @@
                     <p>{{ __('Icons') }}</p>
                 </a>
             </li>
-            <li class="{{ $elementActive == 'map' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'map') }}">
-                    <i class="nc-icon nc-pin-3"></i>
-                    <p>{{ __('Maps') }}</p>
+            <li class="{{ $elementActive == 'cadastro-funcionario' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'cadastro-funcionario') }}">
+                    <i class="nc-icon nc-single-02"></i>
+                    <p>{{ __('Cadastro') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'notifications' ? 'active' : '' }}">
@@ -60,10 +60,10 @@
                     <p>{{ __('Notifications') }}</p>
                 </a>
             </li>
-            <li class="{{ $elementActive == 'tables' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'tables') }}">
-                    <i class="nc-icon nc-tile-56"></i>
-                    <p>{{ __('Table List') }}</p>
+            <li class="{{ $elementActive == 'tarefas' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'tarefas') }}">
+                    <i class="nc-icon nc-ruler-pencil"></i>
+                    <p>{{ __('Tarefa Cadastro') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'typography' ? 'active' : '' }}">

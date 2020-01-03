@@ -1,6 +1,6 @@
 @extends('layouts.app', [
     'class' => '',
-    'elementActive' => 'map'
+    'elementActive' => 'cadastro-funcionario'
 ])
 
 @section('content')
@@ -20,6 +20,7 @@
                                     <div class="form-group">
                                         <input type="text" id="Nome" name="Nome" class="form-control" placeholder="Nome" required>
                                     </div>
+                                  
                                     
                                 </div>
                             </div>
@@ -37,12 +38,44 @@
                                 <div class="row">
                                     <div class="col-md-12 text-center">
                                         <button type="submit" class="btn btn-info btn-round">{{ __('Cadastrar') }}</button>
+                                        
                                     </div>
                                     
                                 </div>
                             </div>
                      </form>
                     </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                       Lista de funcionionário
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table" id="ex-table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Nome
+                                    </th>
+                                    <th>
+                                        Cargo
+                                    </th>
+                                   
+                                    <th class="text-right">
+                                       
+                                    </th>
+                                </thead>
+
+
+                                    <tbody id="ex-table">
+                                        <tr id="tr">
+                                            
+                                        </tr>
+                                </tbody>
+                            </table>
+                                </div>
+                        </div>
                 </div>
             </div>
         </div>
