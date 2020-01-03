@@ -17,41 +17,27 @@
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
-            <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
-                <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
-                    <i class="nc-icon"><img src="{{ asset('paper/img/laravel.svg') }}"></i>
-                    <p>
-                            {{ __('Laravel examples') }}
-                        <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse show" id="laravelExamples">
-                    <ul class="nav">
-                        <li class="{{ $elementActive == 'profile' ? 'active' : '' }}">
-                            <a href="{{ route('profile.edit') }}">
-                                <span class="sidebar-mini-icon">{{ __('UP') }}</span>
-                                <span class="sidebar-normal">{{ __(' User Profile ') }}</span>
-                            </a>
-                        </li>
-                        <li class="{{ $elementActive == 'user' ? 'active' : '' }}">
-                            <a href="{{ route('page.index', 'user') }}">
-                                <span class="sidebar-mini-icon">{{ __('U') }}</span>
-                                <span class="sidebar-normal">{{ __(' User Management ') }}</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="{{ $elementActive == 'icons' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'icons') }}">
-                    <i class="nc-icon nc-diamond"></i>
-                    <p>{{ __('Icons') }}</p>
-                </a>
-            </li>
+           
+            
             <li class="{{ $elementActive == 'cadastro-funcionario' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'cadastro-funcionario') }}">
                     <i class="nc-icon nc-single-02"></i>
                     <p>{{ __('Cadastro') }}</p>
+                </a>
+            </li>
+            
+           
+            <li class="{{ $elementActive == 'tarefa-cadastro' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'tarefa-cadastro') }}">
+                    <i class="nc-icon nc-simple-add"></i>
+                    <p>{{ __('Tarefa Cadastro') }}</p>
+                </a>
+            </li>
+
+            <li class="{{ $elementActive == 'tarefas' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'tarefas') }}">
+                    <i class="nc-icon nc-ruler-pencil"></i>
+                    <p>{{ __('Finalizar Tarefa') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'notifications' ? 'active' : '' }}">
@@ -60,16 +46,10 @@
                     <p>{{ __('Notifications') }}</p>
                 </a>
             </li>
-            <li class="{{ $elementActive == 'tarefas' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'tarefas') }}">
-                    <i class="nc-icon nc-ruler-pencil"></i>
-                    <p>{{ __('Tarefa Cadastro') }}</p>
-                </a>
-            </li>
-            <li class="{{ $elementActive == 'typography' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'typography') }}">
-                    <i class="nc-icon nc-caps-small"></i>
-                    <p>{{ __('Typography') }}</p>
+            <li class="{{ $elementActive == 'icons' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'icons') }}">
+                    <i class="nc-icon nc-diamond"></i>
+                    <p>{{ __('Icons') }}</p>
                 </a>
             </li>
             <li class="active-pro {{ $elementActive == 'upgrade' ? 'active' : '' }}">
@@ -77,6 +57,33 @@
                     <i class="nc-icon nc-spaceship"></i>
                     <p>{{ __('Upgrade to PRO') }}</p>
                 </a>
+            </li>
+
+
+            <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
+                <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
+                    <i class="nc-icon nc-badge"></i>
+                    <p>
+                            {{ __('Configurações') }}
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse show" id="laravelExamples">
+                    <ul class="nav">
+                        <li class="{{ $elementActive == 'profile' ? 'active' : '' }}">
+                            <a href="{{ route('profile.edit') }}">
+                                <span class="sidebar-mini-icon">{{ __('P') }}</span>
+                                <span class="sidebar-normal">{{ __(' Perfil Usuário') }}</span>
+                            </a>
+                        </li>
+                        <li class="{{ $elementActive == 'user' ? 'active' : '' }}">
+                            <a href="{{ route('page.index', 'user') }}">
+                                <span class="sidebar-mini-icon">{{ __('MU') }}</span>
+                                <span class="sidebar-normal">{{ __('Perfeis') }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
         </ul>
     </div>

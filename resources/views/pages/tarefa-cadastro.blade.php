@@ -1,6 +1,6 @@
 @extends('layouts.app', [
     'class' => '',
-    'elementActive' => 'typography'
+    'elementActive' => 'tarefa-cadastro'
 ])
 @section('content')
 <div class="content">
@@ -41,7 +41,7 @@
                             <label class="col-md-3 col-form-label">{{ __('Data Inicio') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="text" id="Data_inicio" name="Data_inicio" class="form-control" placeholder="00/00/0000" required>
+                                    <input type="date" id="Data_inicio" name="Data_inicio" class="form-control" placeholder="00/00/0000" required>
                                 </div>
                                
                             </div>
@@ -51,7 +51,7 @@
                             <label class="col-md-3 col-form-label">{{ __('Horário que irá iniciar tarefa') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input id="hora-cons" type="text" class="form-control" name="hora-cons" value="13:30">
+                                    <input id="hora-cons" type="time" class="form-control" name="hora-cons" value="13:30">
                                 </div>
                                
                             </div>
@@ -82,17 +82,29 @@
 
             <div class="card">
                 <div class="card-header">
-                   Lista de funcionionário
+                   Lista de Tarefas
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table" id="ex-table4">
+                        <table class="table" id="ex-table1">
                             <thead class=" text-primary">
+
                                 <th>
-                                    Nome
+                                    Funcionário
                                 </th>
                                 <th>
-                                    Cargo
+                                    Descritivo da Tarefa
+                                </th>
+                                <th>
+                                    Data e hora
+                                </th>
+
+                                <th>
+                                    Tempo estimado 
+                                </th>
+
+                                <th>
+                                    Status da tarefa
                                 </th>
                                
                                 <th class="text-right">
@@ -101,7 +113,7 @@
                             </thead>
 
 
-                                <tbody id="ex-table4">
+                                <tbody id="ex-table1">
                                     <tr id="tr">
                                         
                                     </tr>
