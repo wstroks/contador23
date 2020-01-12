@@ -9,7 +9,7 @@ const Selecionado2 = $("#listar-select option:selected").text();
 function saveTarefa(Descritivo, Data_inicio,HorasInicio, EstimativaHoras, Selecionado){
     //var novoFuncionario = cadastroFuncionario.push().key();
     var Nome = Selecionado
-    var status_do_serviço="em andamento"
+    var status_do_serviço="aberto"
     const rooRef=database.ref('tarefas/');
     const autoId= rooRef.push().key;
     rooRef.child(autoId).set({

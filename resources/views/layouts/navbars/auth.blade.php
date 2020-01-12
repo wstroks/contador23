@@ -37,7 +37,7 @@
             <li class="{{ $elementActive == 'tarefas' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'tarefas') }}">
                     <i class="nc-icon nc-ruler-pencil"></i>
-                    <p>{{ __('Finalizar Tarefa') }}</p>
+                    <p>{{ __('Iniciar Tarefa') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'notifications' ? 'active' : '' }}">
