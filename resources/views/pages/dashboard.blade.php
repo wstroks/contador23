@@ -12,14 +12,15 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-globe text-warning"></i>
+                                    <i class="nc-icon nc-watch-time text-warning"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Capacity</p>
-                                    <p class="card-title">150GB
-                                        <p>
+                                    <p class="card-category ">Tempo</p>
+                                <p class="card-title" id="tempo">
+                                   
+                                </p>
                                 </div>
                             </div>
                         </div>
@@ -27,7 +28,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> Update Now
+                            <i class="fa fa-calculator"></i>  Total de tempo
                         </div>
                     </div>
                 </div>
@@ -38,14 +39,15 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-money-coins text-success"></i>
+                                    <i class="nc-icon nc-trophy text-success"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Revenue</p>
-                                    <p class="card-title">$ 1,345
-                                        <p>
+                                    <p class="card-category " >Compridos</p>
+                                <p class="card-title" id="compridos">
+
+                                </p>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +55,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-calendar-o"></i> Last day
+                            <i class="fa fa-calendar-o"></i> Trabalhos no prazo
                         </div>
                     </div>
                 </div>
@@ -64,14 +66,14 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-vector text-danger"></i>
+                                    <i class="nc-icon nc-simple-remove text-danger"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Errors</p>
-                                    <p class="card-title">23
-                                        <p>
+                                    <p class="card-category">Atrasados</p>
+                                <p class="card-title" id="atrasados">
+                                </p>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +81,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-clock-o"></i> In the last hour
+                            <i class="fa fa-clock-o"></i> Trabalhos atrasados
                         </div>
                     </div>
                 </div>
@@ -90,14 +92,14 @@
                         <div class="row">
                             <div class="col-5 col-md-4">
                                 <div class="icon-big text-center icon-warning">
-                                    <i class="nc-icon nc-favourite-28 text-primary"></i>
+                                    <i class="nc-icon nc-chart-bar-32 text-primary"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Followers</p>
-                                    <p class="card-title">+45K
-                                        <p>
+                                    <p class="card-category">Total</p>
+                                <p  id="info">
+                                </p>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +107,7 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> Update now
+                            <i class="fa fa-refresh"></i> Total de trabalhos realizados
                         </div>
                     </div>
                 </div>
@@ -180,7 +182,7 @@
 @endsection
 
 @push('scripts')
-
+<script src="js/dash.js"> </script>
 
     <script>
         $(document).ready(function() {

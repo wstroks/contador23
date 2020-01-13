@@ -15,7 +15,7 @@
                         <div class="description">
                             <h5 class="info-title">{{ __('Ferramenta') }}</h5>
                             <p class="description">
-                                {{ __('Seu app bla bla bla') }}
+                                {{ __('Facilitando no monitoramento das atividades de suas empresa.') }}
                             </p>
                         </div>
                     </div>
@@ -25,9 +25,9 @@
                             <i class="nc-icon nc-atom"></i>
                         </div>
                         <div class="description">
-                            <h5 class="info-title">{{ __('Built Audience') }}</h5>
+                            <h5 class="info-title">{{ __('Onix') }}</h5>
                             <p class="description">
-                                {{ __('Desenvolvido com a finalidade de ... bla bla') }}
+                                {{ __('Dashboard interativo de sua empresa') }}
                             </p>
                         </div>
                     </div>

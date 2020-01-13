@@ -59,7 +59,7 @@ function printHTML(request,response){
   return document.getElementById(request).innerHTML+=response;
 }
 
-var reference = database.ref('tarefas');    
+var reference = database.ref('tarefas').orderByChild('Status').equalTo('Finalizado');    
 reference.on('value',function(datas){
     var data = datas.val();
     $.each(data, function(nodo, value) {

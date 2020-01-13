@@ -1,12 +1,12 @@
 <div class="sidebar" data-color="white" data-active-color="danger">
     <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        <a  class="simple-text logo-mini">
             <div class="logo-image-small">
                 <img src="{{ asset('paper') }}/img/logo-small.png">
             </div>
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-            {{ __('Creative Tim') }}
+        <a  class="simple-text logo-normal">
+            {{ __('Organizador') }}
         </a>
     </div>
     <div class="sidebar-wrapper">
@@ -80,7 +80,7 @@
                         <li class="{{ $elementActive == 'user' ? 'active' : '' }}">
                             <a href="{{ route('page.index', 'user') }}">
                                 <span class="sidebar-mini-icon">{{ __('MU') }}</span>
-                                <span class="sidebar-normal">{{ __('Perfeis') }}</span>
+                                <span class="sidebar-normal">{{ __('Perfil') }}</span>
                             </a>
                         </li>
                     </ul>
