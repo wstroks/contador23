@@ -143,6 +143,7 @@ function addTempo(key){
     //console.log('asas1'+ val.dataInicio);
     var calculodataInicio = val.dataInicio;
     var calculodataTermino = val.dataTermino;
+    var NomeX= val.Nome;
       
     var hora=calculohorasInicio;
     var arrayInicio=hora.split(":");
@@ -156,7 +157,7 @@ function addTempo(key){
 
     var  dtPartida = calculodataInicio+" "+calculohorasInicio;
     var  dtChegada = calculodataTermino+" "+ calculohorasTermino;
-
+    
     var ms = moment(dtChegada,"DD/MM/YYYY HH:mm:ss").diff(moment(dtPartida,"DD/MM/YYYY HH:mm:ss"));
     var d = moment.duration(ms);
     var s = Math.floor(d.asHours()) + "h" + moment.utc(ms).format(" mm") +"m";
@@ -173,8 +174,8 @@ function addTempo(key){
     console.log(parseInt(estimaArray[0])- parseInt(d.asHours()));
     console.log(parseInt(estimaArray[1])- parseInt(moment.utc(ms).format(" mm")));
 
-    let consulta = firebase.database().ref('funcionario').orderByChild('Nome').equalTo(Nome);
-         
+    let consulta = firebase.database().ref('funcionario').orderByChild('Nome').equalTo(NomeX);
+    
     consulta.on('child_added', function(item) {
        
        //agora= calculohorasInicio.split(":");
@@ -187,22 +188,7 @@ function addTempo(key){
        var calculo=item.val().Horas + h;
        var calculoMinutos= item.val().Minutos + minutos;
        
-       if(estimaArray[0]=="00" && minutos>0){
-           console.log("1 " +estimaArray[1]+">"+minutos);
-        data={Horas: calculo,
-         Minutos: calculoMinutos,
-         tarefasComprindas: contadorComprindas+1}
-         database.ref('funcionario/'+keyFuncionario).update(data);
-        
-        }
-        if(estimaArray[0]=="00" && minutos<0){
-            console.log("2 " +estimaArray[1]+"<"+minutos);
-            data={Horas: calculo,
-             Minutos: calculoMinutos,
-             tarefasAtrasadas: contadorAtrasadas+1}
-             database.ref('funcionario/'+keyFuncionario).update(data);
-            
-       }
+       
        if(h>0){
         console.log("3 " +estimaArray[0]+"<"+h);
        data={Horas: calculo,
@@ -219,6 +205,39 @@ function addTempo(key){
          tarefasAtrasadas: contadorAtrasadas+1}
          database.ref('funcionario/'+keyFuncionario).update(data);
          
+        }
+        if(estimaArray[0]=="00" && minutos>0){
+            console.log("1 " +estimaArray[1]+">"+minutos);
+         data={Horas: calculo,
+          Minutos: calculoMinutos,
+          tarefasComprindas: contadorComprindas+1}
+          database.ref('funcionario/'+keyFuncionario).update(data);
+         
+         }
+         if(estimaArray[0]=="00" && minutos<0){
+             console.log("2 " +estimaArray[1]+"<"+minutos);
+             data={Horas: calculo,
+              Minutos: calculoMinutos,
+              tarefasAtrasadas: contadorAtrasadas+1}
+              database.ref('funcionario/'+keyFuncionario).update(data);
+             
+        }
+
+        if(estimaArray[0]==h && minutos>0){
+            console.log("1 " +estimaArray[1]+">"+minutos);
+         data={Horas: calculo,
+          Minutos: calculoMinutos,
+          tarefasComprindas: contadorComprindas+1}
+          database.ref('funcionario/'+keyFuncionario).update(data);
+         
+         }
+         if(estimaArray[0]==h && minutos<0){
+             console.log("2 " +estimaArray[1]+"<"+minutos);
+             data={Horas: calculo,
+              Minutos: calculoMinutos,
+              tarefasAtrasadas: contadorAtrasadas+1}
+              database.ref('funcionario/'+keyFuncionario).update(data);
+             
         }
 
        // database.ref('funcionario/'+keyFuncionario).update(data);
