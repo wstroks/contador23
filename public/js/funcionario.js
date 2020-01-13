@@ -9,25 +9,37 @@ function submitForm(e){
     
     var Nome = getInputVal('Nome');
     var Cargo = getInputVal('Cargo');
+    var Email = getInputVal('Email');
+    var Horas =0;
+    var Minutos =0;
+    var tarefasComprindas = 0;
+    var tarefasAtrasadas=0;
+
 
     console.log(Nome +" " + Cargo);
 
-    saveFuncionario(Nome, Cargo);
+    saveFuncionario(Nome, Cargo, Email, Horas,Minutos, tarefasAtrasadas,tarefasComprindas);
 }
 
 function getInputVal(id){
     return document.getElementById(id).value;
 }
 
-function saveFuncionario(Nome, Cargo){
+function saveFuncionario(Nome, Cargo, Email, Horas,Minutos,tarefasAtrasadas,tarefasComprindas){
     //var novoFuncionario = cadastroFuncionario.push().key();
     const autoId= rooRef.push().key;
     rooRef.child(autoId).set({
         Nome: Nome,
          Cargo: Cargo,
+         Email: Email,
+         Horas: Horas,
+         Minutos: Minutos,
+         tarefasAtrasadas: tarefasAtrasadas,
+         tarefasComprindas: tarefasComprindas
     });
-
+    window.location.reload();
     alert('Funcionário cadastrado!');
+    
 }
 
 firebase.database().ref('funcionario').orderByChild('Nome').on('value', function (snapshot){
@@ -50,6 +62,7 @@ firebase.database().ref('funcionario').orderByChild('Nome').on('value', function
                 content +='<tr>';
                 content += '<td>'+val.Nome+'</td>';
                 content += '<td>'+val.Cargo+'</td>';
+                content += '<td>'+val.Email+'</td>';
                 var key= item.key
                 content += '<td class="text-right"><button type="submit" class="btn btn-info btn-round" onclick="removeTask(\''+key+'\')" > Excluir</button></td>';
                // content += '<td>'+'<a class="waves-effect waves-light btn-floating deep-purple accent-1"  href='+val.link+'><i class="material-icons centered">directions_car</i></a>'+'</td>';

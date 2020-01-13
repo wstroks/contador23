@@ -33,19 +33,20 @@
                     <p>{{ __('Tarefa Cadastro') }}</p>
                 </a>
             </li>
-
-            <li class="{{ $elementActive == 'tarefas' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'tarefas') }}">
+            <li class="{{ $elementActive == 'iniciar-tarefas' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'iniciar-tarefas') }}">
                     <i class="nc-icon nc-ruler-pencil"></i>
                     <p>{{ __('Iniciar Tarefa') }}</p>
                 </a>
             </li>
-            <li class="{{ $elementActive == 'notifications' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'notifications') }}">
-                    <i class="nc-icon nc-bell-55"></i>
-                    <p>{{ __('Notifications') }}</p>
+
+            <li class="{{ $elementActive == 'tarefas' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'tarefas') }}">
+                    <i class="nc-icon nc-check-2"></i>
+                    <p>{{ __('Tarefas Finalizadas') }}</p>
                 </a>
             </li>
+            
             <li class="{{ $elementActive == 'icons' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'icons') }}">
                     <i class="nc-icon nc-diamond"></i>

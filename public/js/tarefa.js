@@ -6,19 +6,24 @@ const database = firebase.database();
 const Selecionado2 = $("#listar-select option:selected").text();
 
 
-function saveTarefa(Descritivo, Data_inicio,HorasInicio, EstimativaHoras, Selecionado){
+        
+function saveTarefa(Titulo, Descritivo, dataInicio,horasInicio,dataTermino,horasTermino, estimativaHoras, Selecionado){
     //var novoFuncionario = cadastroFuncionario.push().key();
     var Nome = Selecionado
-    var status_do_serviço="aberto"
+    var Status="aberto"
     const rooRef=database.ref('tarefas/');
     const autoId= rooRef.push().key;
     rooRef.child(autoId).set({
+        Nome: Nome,
+        Titulo: Titulo,
         Descritivo: Descritivo,
-        Data_inicio: Data_inicio,
-        HorasInicio: HorasInicio,
-        EstimativaHoras: EstimativaHoras,
-        status_do_serviço: status_do_serviço,
-        Nome: Nome
+        dataInicio: dataInicio,
+        horasInicio: horasInicio,
+        dataTermino: dataTermino, 
+        horasTermino:horasTermino,
+        estimativaHoras: estimativaHoras,
+        Status: Status
+        
     });
 
     alert('Tarefa cadastrado!');
@@ -34,15 +39,17 @@ function submitTarefa(e){
 
     var Selecionado = $("#listar-select option:selected").text();
     console.log(Selecionado);
-    
+    var Titulo = getInputVal('Titulo');
     var Descritivo = getInputVal('Nome');
-    var Data_inicio = getInputVal('Data_inicio');
-    var HorasInicio= getInputVal('hora-cons');
-    var EstimativaHoras = getInputVal('horas');
+    var dataInicio = "não atribuido";
+    var horasInicio= "não atribuido";
+    var dataTermino = "não atribuido";
+    var horasTermino= "não atribuido";
+    var estimativaHoras = getInputVal('horas');
 
-    console.log(Descritivo +" " + Data_inicio +" " + HorasInicio +" " + EstimativaHoras);
+    console.log(Titulo,Descritivo +" " + dataInicio +" " + horasInicio +" " + estimativaHoras);
 
-    saveTarefa(Descritivo, Data_inicio,HorasInicio, EstimativaHoras, Selecionado);
+    saveTarefa(Titulo,Descritivo, dataInicio,horasInicio, dataTermino, horasTermino,estimativaHoras, Selecionado);
 }
 
 
@@ -108,50 +115,3 @@ firebase.database().ref('funcionario').orderByChild('Nome').on('value', function
 
 });*/
 
-
-firebase.database().ref('tarefas/').orderByChild('Nome').on('value', function (snapshot){
-    var content = '';
-    
-    snapshot.forEach(function(item) {
-       /* 
-        //var th1=document.createElement('td');
-        th.appendChild(document.createTextNode(item.val().nome));
-        //th1.appendChild(document.createTextNode(item.val().bairro));
-        th2.appendChild(document.createTextNode(item.val().gasolina));
-        
-        
-        nome_posto.appendChild(th);
-       // bairro_posto.appendChild(th1);
-        gasolina.appendChild(th2);*/
-
-        var val = item.val();
-       
-      //  content +='<tbody>';
-      content +='<tr>';
-      content += '<td>'+val.Nome+'</td>';
-      content += '<td>'+val.Descritivo+'</td>';
-      content += '<td>'+val.Data_inicio+'</td>';
-      content += '<td>'+val.EstimativaHoras+'</td>';
-      content += '<td>'+val.status_do_serviço+'</td>';
-      
-      var key= item.key
-     content += '<td class="text-right"><button type="submit" class="btn btn-info btn-round" onclick="removeTask(\''+key+'\')" > Excluir</button></td>';
-               //content += '<td>'+'<a class="waves-effect waves-light btn-floating deep-purple accent-1"  href='+val.link+'><i class="material-icons centered">directions_car</i></a>'+'</td>';
-      content +='</tr>';    
-                
-              //  content +='</tbody>';
-            
-    });
-    $('#ex-table1').append(content);
-
-
-});
-
-
-function removeTask(key){
-    if(confirm("Tem certeza que deseja remover?")){
-        
-        database.ref('tarefas/'+Selecionado2+'/'+key).remove();
-        window.location.reload();
-    }
-}
