@@ -1,12 +1,12 @@
 document.getElementById('form_funcionario').addEventListener('submit', submitForm);
-const database = firebase.database();
+var database = firebase.database();
 const rooRef=database.ref('funcionario');
 
 
 
 function submitForm(e){
     e.preventDefault();
-    
+    inHTML("ex-table","");
     var Nome = getInputVal('Nome');
     var Cargo = getInputVal('Cargo');
     var Email = getInputVal('Email');
@@ -27,6 +27,7 @@ function getInputVal(id){
 
 function saveFuncionario(Nome, Cargo, Email, Horas,Minutos,tarefasAtrasadas,tarefasComprindas){
     //var novoFuncionario = cadastroFuncionario.push().key();
+    
     const autoId= rooRef.push().key;
     rooRef.child(autoId).set({
         Nome: Nome,
@@ -37,11 +38,12 @@ function saveFuncionario(Nome, Cargo, Email, Horas,Minutos,tarefasAtrasadas,tare
          tarefasAtrasadas: tarefasAtrasadas,
          tarefasComprindas: tarefasComprindas
     });
-    window.location.reload();
+    //window.location.reload();
+    
     alert('Funcionário cadastrado!');
     
 }
-
+/*
 firebase.database().ref('funcionario').orderByChild('Nome').on('value', function (snapshot){
     var content = '';
     snapshot.forEach(function(item) {
@@ -55,7 +57,7 @@ firebase.database().ref('funcionario').orderByChild('Nome').on('value', function
         nome_posto.appendChild(th);
        // bairro_posto.appendChild(th1);
         gasolina.appendChild(th2);*/
-
+/*
         var val = item.val();
        
       //  content +='<tbody>';
@@ -74,15 +76,41 @@ firebase.database().ref('funcionario').orderByChild('Nome').on('value', function
     $('#ex-table').append(content);
 
 
-});
+});*/
 
 function removeTask(key){
     if(confirm("Tem certeza que deseja remover?")){
-        
+        inHTML("ex-table","");
         database.ref('funcionario/'+key).remove();
-        window.location.reload();
+        
+        //window.location.reload();
     }
 }
+
+function inHTML(request,response){
+    return document.getElementById(request).innerHTML=response;
+}
+
+function value(request){
+    return  document.getElementById(request).value;
+  }
+  function printHTML(request,response){
+    return document.getElementById(request).innerHTML+=response;
+  }
+  
+  var reference = database.ref('funcionario');    
+  reference.on('value',function(datas){
+      var data = datas.val();
+      $.each(data, function(nodo, value) {
+              var sendData = table(value.Nome,value.Cargo,value.Email,nodo);
+              printHTML('ex-table',sendData);
+      });       
+  });
+  
+  function table(Nome, Cargo, Email, key){
+    return '<tr><td>'+Nome+'</td><td>'+Cargo+'</td><td>'+Email+'</td>'+
+    '<td class="text-right"><button type="submit" class="btn btn-info btn-round" onclick="removeTask(\''+key+'\')" > Excluir</button></td> </tr>';
+  }
 
 
 

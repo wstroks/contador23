@@ -47,10 +47,10 @@
                 </a>
             </li>
             
-            <li class="{{ $elementActive == 'icons' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'icons') }}">
-                    <i class="nc-icon nc-diamond"></i>
-                    <p>{{ __('Icons') }}</p>
+            <li class="{{ $elementActive == 'painel-funcionario' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'painel-funcionario') }}">
+                    <i class="nc-icon nc-badge"></i>
+                    <p>{{ __('Painel Funcionario') }}</p>
                 </a>
             </li>
             <li class="active-pro {{ $elementActive == 'upgrade' ? 'active' : '' }}">

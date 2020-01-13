@@ -122,9 +122,7 @@
 
 
                         <tbody id="ex-table">
-                            <tr id="tr">
-
-                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>

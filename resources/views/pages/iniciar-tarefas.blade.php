@@ -15,7 +15,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table" id="ex-table1">
+                            <table class="table">
                                 <thead class=" text-primary">
                                     <th scope="col">
                                         Titulo
@@ -53,9 +53,7 @@
     
     
                                 <tbody id="ex-table1">
-                                    <tr id="tr">
-    
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>

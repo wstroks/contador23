@@ -11,7 +11,7 @@ var Status = "";
 
 firebase.database().ref('tarefas/').orderByChild('Nome').on('value', function (snapshot){
     var content = '';
-    
+    inHTML("ex-table1","");
     snapshot.forEach(function(item) {
        /* 
         //var th1=document.createElement('td');
@@ -64,15 +64,65 @@ firebase.database().ref('tarefas/').orderByChild('Nome').on('value', function (s
 
 });
 
+
+function inHTML(request,response){
+    return document.getElementById(request).innerHTML=response;
+}
+
+function value(request){
+    return  document.getElementById(request).value;
+  }
+  function printHTML(request,response){
+    return document.getElementById(request).innerHTML+=response;
+  }
+  
+  /*var reference = database.ref('tarefas');    
+  reference.on('value',function(datas){
+      var data = datas.val();
+      $.each(data, function(nodo, value) {
+              var sendData = table(value.Titulo,value.Nome,value.Descritivo,value.dataInicio,value.horasInicio,value.estimativaHoras,value.Status,nodo);
+              printHTML('ex-table1',sendData);
+      });       
+  });
+  
+  function table(Titulo, Nome Descritivo, dataInicio, horasInicio,estimativaHoras,Status,key){
+
+    Titulo= Titulo1;   
+    Nome = Nome1;
+    Descritivo = Descritivo1;
+    dataInicio  = "s";
+    horasInicio = "ss";
+    estimativaHoras = estimativaHoras1;
+    Status = Status1;
+
+    if(Status != "Em andamento"){
+        return '<tr><td>'+Titulo+'</td><td>'+Nome+'</td><td>'+Descritivo+'</td>'+
+    '<td>'+dataInicio+' </td> <td>'+horasInicio+'</td> <td>'+estimativaHoras+'</td> <td>'+Status+ '</td>'+
+        '<td class="text-right"><button  type="submit" class="btn btn-success btn-round" onclick="iniciarTask(\''+key+'\')" > Iniciar</button></td>'+
+        +'<td class="text-right"><button  type="submit" class="btn btn-danger btn-round" onclick="removeTask(\''+key+'\')" > Excluir</button></td></tr>';    
+    }else{
+        return '<td>'+Titulo+'</td><td>'+Nome+'</td><td>'+Descritivo1+'</td>'+
+        '<td>'+dataInicio+' </td> <td>'+horasInicio1+'</td> <td>'+estimativaHoras1+'</td> <td>'+Status1+ '</td>'+
+            '<td class="text-right"><button  type="submit" class="btn btn btn-dark btn-round" onclick="finalizarTask(\''+key+'\')" > Finalizar</button></td>'
+            +'<td class="text-right"><button  type="submit" class="btn btn-danger btn-round" onclick="removeTask(\''+key+'\')" > Excluir</button></td>';    
+        }
+        
+       
+                  //content += '<td>'+'<a class="waves-effect waves-light btn-floating deep-purple accent-1"  href='+val.link+'><i class="material-icons centered">directions_car</i></a>'+'</td>';
+
+    
+  }*/
+
 function removeTask(key){
     if(confirm("Tem certeza que deseja remover?")){
-        
+        inHTML("ex-table1","");
         database.ref('tarefas/'+key).remove();
-        window.location.reload();
+        //window.location.reload();
     }
 }
 
 function iniciarTask(key){
+    
     var fh = new Date();
     console.log( key);
     /**var Titulo= val.Titulo;
@@ -92,14 +142,15 @@ function iniciarTask(key){
         //estimativaHoras: estimativaHoras,
         Status: "Em andamento"
     }
-        
+    inHTML("ex-table1","");    
     database.ref('tarefas/'+key).update(data);
-    window.location.reload();
+    //window.location.reload();
 
 }
 
 
 function finalizarTask(key){
+    
     var fh = new Date();
     console.log(key);
     var dataTermino=fh.getDate()+"/"+ (fh.getMonth()+1) +"/"+fh.getFullYear();
@@ -117,7 +168,7 @@ function finalizarTask(key){
          Status: "Finalizado"
      }
     
-     
+     inHTML("ex-table1","");
      database.ref('tarefas/'+key).update(data);
      
      
@@ -127,7 +178,7 @@ function finalizarTask(key){
      
      //window.location.reload();
      addTempo(key);
-     window.location.reload();
+     //window.location.reload();
 
 }
 

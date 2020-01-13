@@ -1,6 +1,9 @@
-const database = firebase.database();
+var database = firebase.database();
 
-firebase.database().ref('tarefas/').orderByChild('Nome').on('value', function (snapshot){
+
+
+/*
+firebase.database().ref('tarefas').orderByChild('Nome').on('value', function (snapshot){
     var content = '';
     
     snapshot.forEach(function(item) {
@@ -14,7 +17,7 @@ firebase.database().ref('tarefas/').orderByChild('Nome').on('value', function (s
         nome_posto.appendChild(th);
        // bairro_posto.appendChild(th1);
         gasolina.appendChild(th2);*/
-
+    /*    
         var val = item.val();
       if(val.Status == "Finalizado"){
       //  content +='<tbody>';
@@ -42,9 +45,30 @@ firebase.database().ref('tarefas/').orderByChild('Nome').on('value', function (s
       content +='</tr>';    
     }
               //  content +='</tbody>';
-            
+    //content = '';
     });
     $('#ex-table1').append(content);
 
 
+});*/
+
+function value(request){
+  return  document.getElementById(request).value;
+}
+function printHTML(request,response){
+  return document.getElementById(request).innerHTML+=response;
+}
+
+var reference = database.ref('tarefas');    
+reference.on('value',function(datas){
+    var data = datas.val();
+    $.each(data, function(nodo, value) {
+            var sendData = table(value.Titulo,value.Nome,value.Descritivo,value.dataInicio,value.horasInicio,value.estimativaHoras,value.Status);
+            printHTML('ex-table1',sendData);
+    });       
 });
+
+function table(Titulo, Nome, Descritivo, dataInicio, horasInicio,estimativaHoras,Status){
+  return '<tr><td>'+Titulo+'</td><td>'+Nome+'</td><td>'+Descritivo+'</td>'+
+  '<td>'+dataInicio+' </td> <td>'+horasInicio+'</td> <td>'+estimativaHoras+'</td> <td>'+Status+ '</td>';
+}
