@@ -44,7 +44,7 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category " >Compridos</p>
+                                    <p class="card-category " >No Prazo</p>
                                 <p class="card-title" id="compridos">
 
                                 </p>
@@ -113,7 +113,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card ">
