@@ -113,82 +113,63 @@
                 </div>
             </div>
         </div>
+        
         <div class="row">
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header ">
-                        <h5 class="card-title">Users Behavior</h5>
-                        <p class="card-category">24 Hours performance</p>
+                        <h5 class="card-title">Gráfico de Quantidade de Trabalhos Feito no Prazo</h5>
+                        <p class="card-category">Performance Positiva dos Funcionários</p>
                     </div>
                     <div class="card-body ">
-                        <canvas id=chartHours width="400" height="100"></canvas>
+                        <canvas id="primeiroGrafico" width="400" height="100"></canvas>
                     </div>
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-history"></i> Updated 3 minutes ago
+                            <i class="fa fa-history"></i> Atualizado
                         </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
+
+
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header ">
-                        <h5 class="card-title">Email Statistics</h5>
-                        <p class="card-category">Last Campaign Performance</p>
+                        <h5 class="card-title">Gráfico de Quantidade de Trabalhos Feito Fora do Prazo</h5>
+                        <p class="card-category">Performance Negativa dos Funcionários</p>
                     </div>
                     <div class="card-body ">
-                        <canvas id="chartEmail"></canvas>
+                        <canvas id="segundoGrafico" width="400" height="100"></canvas>
                     </div>
                     <div class="card-footer ">
-                        <div class="legend">
-                            <i class="fa fa-circle text-primary"></i> Opened
-                            <i class="fa fa-circle text-warning"></i> Read
-                            <i class="fa fa-circle text-danger"></i> Deleted
-                            <i class="fa fa-circle text-gray"></i> Unopened
-                        </div>
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-calendar"></i> Number of emails sent
+                            <i class="fa fa-history"></i> Atualizado
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="card card-chart">
-                    <div class="card-header">
-                        <h5 class="card-title">NASDAQ: AAPL</h5>
-                        <p class="card-category">Line Chart with Points</p>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="speedChart" width="400" height="100"></canvas>
-                    </div>
-                    <div class="card-footer">
-                        <div class="chart-legend">
-                            <i class="fa fa-circle text-info"></i> Tesla Model S
-                            <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                        </div>
-                        <hr />
-                        <div class="card-stats">
-                            <i class="fa fa-check"></i> Data information certified
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
+       
     </div>
 @endsection
 
 @push('scripts')
-<script src="js/dash.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 
+<script src="js/dash.js"> </script>
+<!--
     <script>
         $(document).ready(function() {
             // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
             demo.initChartsPages();
         });
-    </script>
+    </script> !-->
 
 @endpush

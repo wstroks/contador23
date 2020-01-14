@@ -1,4 +1,9 @@
 var database = firebase.database();
+var labelC=[];
+var estimaC=[];
+
+var labelT=[];
+var estimaT=[];
 
 function value(request){
     
@@ -25,6 +30,11 @@ var ref = database.ref('funcionario').orderByChild('Nome');
                 var sendData1=dadosComprido(value.tarefasComprindas);
                 var sendData2=dadosAtrasadas(value.tarefasAtrasadas);
                 var sendData3=dadosInfo(value.tarefasComprindas,value.tarefasAtrasadas);
+                labelC.push(value.Nome);
+                estimaC.push(value.tarefasComprindas);
+
+                labelT.push(value.Nome);
+                estimaT.push(value.tarefasAtrasadas);
                 printHTML('tempo',sendData);
                 printHTML('compridos',sendData1);
                 printHTML('atrasados',sendData2);
@@ -32,7 +42,87 @@ var ref = database.ref('funcionario').orderByChild('Nome');
 
                 //printTabela(Selecionado);
 
-        });       
+        });    
+        
+  var ctx = document.getElementById('primeiroGrafico');
+  var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: labelC,
+        datasets: [{
+            label: 'Trabalhos no Prazo',
+            data: estimaC,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 250, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: { 
+            yAxes: [{
+                ticks: {
+                    min: 0,
+                    beginAtZero: true                },
+                    
+            }]
+        }
+    }
+});
+
+
+
+var ctx = document.getElementById('segundoGrafico');
+  var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: labelT,
+        datasets: [{
+            label: 'Trabalhos Fora do Prazo',
+            data: estimaT,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 250, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: { 
+            yAxes: [{
+                ticks: {
+                    min: 0,
+                    beginAtZero: true                },
+                    
+            }]
+        }
+    }
+});
     });
 
 var h=0;
@@ -49,9 +139,16 @@ function dadosHoras(Horas,Minutos){
         if(h>0){ 
         h-=1;
         m+=60;
+    }else{
+        x=-1;
     }
        }
     }
+    
+    var y=m;
+    
+        
+    
        
     return h+ 'H ' + m+' M';
             
@@ -76,3 +173,6 @@ var calculo = 0;
      calculo += parseInt(tarefasCompridas)+parseInt(tarefasAtrasadas)
     return calculo;
  }
+
+
+
