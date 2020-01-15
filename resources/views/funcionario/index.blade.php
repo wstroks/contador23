@@ -1,0 +1,9 @@
+
+
+
+
+{{Auth::guard('funcionario')->user()}}
+
+
+
+

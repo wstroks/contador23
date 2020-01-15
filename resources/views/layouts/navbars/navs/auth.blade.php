@@ -57,18 +57,29 @@
                 <li class="nav-item btn-rotate dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink2"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="nc-icon nc-settings-gear-65"></i>
+                        <i class="nc-icon nc-button-power"></i>
                         <p>
                             <span class="d-lg-none d-md-block">{{ __('Account') }}</span>
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink2">
-                        <form class="dropdown-item" action="{{ route('logout') }}" id="formLogOut" method="POST" style="display: none;">
+                        @if(Auth::guard('funcionario')->check())
+                        <form class="dropdown-item" action="{{  route('funcionarios-view/logout') }}" id="formLogOut" method="POST" style="display: none;">
                             @csrf
                         </form>
+                        @endif
+
+                        @if(Auth::guard('web')->check())
+                        <form class="dropdown-item" action="{{  route('logout') }}" id="formLogOut" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+
+                        @endif
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" onclick="document.getElementById('formLogOut').submit();">{{ __('Sair') }}</a>
+                           <!-- @if(Auth::guard('web')->check()) 
                             <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Configurações') }}</a>
+                            @endif!-->
                         </div>
                     </div>
                 </li>

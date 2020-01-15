@@ -74,7 +74,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-        'funcionario' => [
+        'funcionarios' => [
             'driver' => 'eloquent',
             'model' => App\Funcionario::class,
         ],

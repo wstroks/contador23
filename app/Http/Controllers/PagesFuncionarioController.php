@@ -4,16 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PageController extends Controller
+class PagesFuncionarioController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    //
+
     public function __construct()
     {
-        $this->middleware('auth:web');
+        $this->middleware('auth:funcionario');
         //$this->middleware('auth:web');
     }
 
@@ -25,8 +22,8 @@ class PageController extends Controller
      */
     public function index(string $page)
     {
-        if (view()->exists("pages.{$page}")) {
-            return view("pages.{$page}");
+        if (view()->exists("pagesFuncionario.{$page}")) {
+            return view("pagesFuncionario.{$page}");
         }
 
         return abort(404);

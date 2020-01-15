@@ -19,7 +19,20 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'funcionario'], function () {
+	Route::middleware('auth:funcionario')->group(function () {
+	Route::get('funcionarios-view','FuncionarioController@index');
+	Route::get('{page}', ['asP' => 'pageFuncionario.index', 'funcionario' => 'PagesFuncionarioController@index']);
+});
+	//Route::get('/funcionarios-view/login','FuncionarioController@dash');
+	Route::get('funcionarios-view/login-f','FuncionarioController@login')->name('login-f');
+	Route::post('funcionarios-view/login-f','FuncionarioController@postLogin');
+	Route::get('funcionarios-view/logout','FuncionarioController@logout');
+
+	
+});
+
+Route::group(['middleware' => 'web'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
@@ -29,4 +42,5 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
 });
+
 

@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-    'class' => 'login-page',
+    'class' => 'Funcionario',
     'backgroundImagePath' => 'img/bg/fabio-mangione.jpg'
 ])
 
@@ -7,12 +7,12 @@
     <div class="content">
         <div class="container">
             <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-                <form class="form" method="POST" action="{{ route('login') }}">
+                <form class="form" method="POST" action="{{ route('login-f') }}">
                     @csrf
                     <div class="card card-login">
                         <div class="card-header ">
                             <div class="card-header ">
-                                <h3 class="header text-center">{{ __('Login Administrador') }}</h3>
+                                <h3 class="header text-center">{{ __('Login Funcionários') }}</h3>
                             </div>
                         </div>
                         <div class="card-body ">
