@@ -31,10 +31,10 @@ var ref = database.ref('funcionario').orderByChild('Nome');
                 var sendData2=dadosAtrasadas(value.tarefasAtrasadas);
                 var sendData3=dadosInfo(value.tarefasComprindas,value.tarefasAtrasadas);
                 labelC.push(value.Nome);
-                estimaC.push(value.tarefasComprindas);
+                estimaC.push(parseInt(value.tarefasComprindas));
 
                 labelT.push(value.Nome);
-                estimaT.push(value.tarefasAtrasadas);
+                estimaT.push(parseInt(value.tarefasAtrasadas));
                 printHTML('tempo',sendData);
                 printHTML('compridos',sendData1);
                 printHTML('atrasados',sendData2);
@@ -43,86 +43,9 @@ var ref = database.ref('funcionario').orderByChild('Nome');
                 //printTabela(Selecionado);
 
         });    
+        grafico();
         
-  var ctx = document.getElementById('primeiroGrafico');
-  var myChart = new Chart(ctx, {
-    type: 'horizontalBar',
-    data: {
-        labels: labelC,
-        datasets: [{
-            label: 'Trabalhos no Prazo',
-            data: estimaC,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 250, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: { 
-            yAxes: [{
-                ticks: {
-                    min: 0,
-                    beginAtZero: true                },
-                    
-            }]
-        }
-    }
-});
-
-
-
-var ctx = document.getElementById('segundoGrafico');
-  var myChart = new Chart(ctx, {
-    type: 'horizontalBar',
-    data: {
-        labels: labelT,
-        datasets: [{
-            label: 'Trabalhos Fora do Prazo',
-            data: estimaT,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 250, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: { 
-            yAxes: [{
-                ticks: {
-                    min: 0,
-                    beginAtZero: true                },
-                    
-            }]
-        }
-    }
-});
+ 
     });
 
 var h=0;
@@ -177,4 +100,88 @@ var calculo = 0;
  }
 
 
-
+ function grafico(){
+    Chart.defaults.horizontalBar;
+    var ctx = document.getElementById('primeiroGrafico').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'horizontalBar',
+      data: {
+          labels: labelC,
+          datasets: [{
+              label: 'Trabalhos no Prazo',
+              data: estimaC,
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 250, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: { 
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:  true
+                                 }
+                      
+              }]
+          }
+      }
+  });
+  
+  
+  
+  var ctx = document.getElementById('segundoGrafico').getContext('2d');
+    var myChart = new Chart(ctx, {
+      responsive: true,
+      type: 'horizontalBar',
+      data: {
+          labels: labelT,
+          datasets: [{
+              label: 'Trabalhos Fora do Prazo',
+              data: estimaT,
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 250, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: { 
+              yAxes: [{
+                  ticks: {
+                     
+                     beginAtZero: true                
+                    }
+                      
+              }]
+          }
+      }
+  });
+  
+ }

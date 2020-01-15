@@ -49,7 +49,7 @@
             
             <li class="{{ $elementActive == 'painel-funcionario' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'painel-funcionario') }}">
-                    <i class="nc-icon nc-badge"></i>
+                    <i class="nc-icon nc-chart-pie-36"></i>
                     <p>{{ __('Painel Funcionario') }}</p>
                 </a>
             </li>

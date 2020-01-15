@@ -120,8 +120,8 @@
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header ">
-                        <h5 class="card-title">Gráfico de Quantidade de Trabalhos Feito no Prazo</h5>
-                        <p class="card-category">Performance Positiva dos Funcionários</p>
+                        <h5 class="card-title">Gráfico de quantidade de trabalhos feito no prazo</h5>
+                        <p class="card-category">Performance positiva dos funcionários</p>
                     </div>
                     <div class="card-body ">
                         <canvas id="primeiroGrafico" width="400" height="100"></canvas>
@@ -142,8 +142,8 @@
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header ">
-                        <h5 class="card-title">Gráfico de Quantidade de Trabalhos Feito Fora do Prazo</h5>
-                        <p class="card-category">Performance Negativa dos Funcionários</p>
+                        <h5 class="card-title">Gráfico de quantidade de trabalhos feito fora do prazo</h5>
+                        <p class="card-category">Performance negativa dos funcionários</p>
                     </div>
                     <div class="card-body ">
                         <canvas id="segundoGrafico" width="400" height="100"></canvas>
@@ -163,7 +163,7 @@
 @endsection
 
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
 
 <script src="js/dash.js"> </script>
 <!--
