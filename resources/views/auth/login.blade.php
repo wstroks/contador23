@@ -69,9 +69,10 @@
                 <a href="{{ route('password.request') }}" class="btn btn-link">
                     {{ __('Forgot password') }}
                 </a> !-->
+                <!--
                 <a href="{{ route('register') }}" class="btn btn-link float-right">
                     {{ __('Criar contar') }}
-                </a>
+                </a> !-->
             </div>
         </div>
     </div>

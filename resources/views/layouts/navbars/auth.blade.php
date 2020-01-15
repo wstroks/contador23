@@ -53,12 +53,13 @@
                     <p>{{ __('Painel Funcionario') }}</p>
                 </a>
             </li>
+            <!--
             <li class="active-pro {{ $elementActive == 'upgrade' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'upgrade') }}">
                     <i class="nc-icon nc-spaceship"></i>
                     <p>{{ __('Upgrade to PRO') }}</p>
                 </a>
-            </li>
+            </li> !-->
 
 
             <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">

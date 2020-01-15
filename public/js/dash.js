@@ -127,9 +127,11 @@ var ctx = document.getElementById('segundoGrafico');
 
 var h=0;
 var m=0;
+var contador=0;
 function dadosHoras(Horas,Minutos){
     inHTML("tempo","");
-    h=h+Horas;
+    contador+=1;
+   /* h=h+Horas;
     m=m+Minutos;
     var x=h;
     while(x>0 && m<0){
@@ -145,12 +147,12 @@ function dadosHoras(Horas,Minutos){
        }
     }
     
-    var y=m;
+    var y=m;*/
     
         
     
        
-    return h+ 'H ' + m+' M';
+    return contador;
             
 }
 var tarefasC=0;

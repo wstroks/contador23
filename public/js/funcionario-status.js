@@ -76,7 +76,7 @@ function printTabela(Selecionado){
 
 function dadosHoras(Horas,Minutos,Nome){
        
-return Horas+ 'H ' + Minutos+' M';
+return Horas+ 'H ' + Minutos+'M';
         
             
 }

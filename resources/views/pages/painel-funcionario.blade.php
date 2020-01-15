@@ -22,21 +22,20 @@
                 </div>
             </div>
         </div>
+
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
                 <div class="card-body ">
-                    
                     <div class="row">
                         <div class="col-5 col-md-4">
                             <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-watch-time text-warning"></i>
+                                <i class="nc-icon nc-chart-bar-32 text-primary"></i>
                             </div>
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                                <p class="card-category ">Tempo</p>
-                                <p class="card-title" id="tempo">
-                                   
+                                <p class="card-category">Total</p>
+                                <p  id="info">
                                 </p>
                             </div>
                         </div>
@@ -45,11 +44,12 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                         Total de tempo
+                        <i class="fa fa-refresh"></i> Total de trabalhos
                     </div>
                 </div>
             </div>
         </div>
+        
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
                 <div class="card-body ">
@@ -103,19 +103,24 @@
                 </div>
             </div>
         </div>
+        
+
+
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
                 <div class="card-body ">
+                    
                     <div class="row">
                         <div class="col-5 col-md-4">
                             <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-chart-bar-32 text-primary"></i>
+                                <i class="nc-icon nc-watch-time text-warning"></i>
                             </div>
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                                <p class="card-category">Total</p>
-                                <p  id="info">
+                                <p class="card-category ">Tempo</p>
+                                <p class="card-title" id="tempo">
+                                   
                                 </p>
                             </div>
                         </div>
@@ -124,7 +129,7 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-refresh"></i> Total de trabalhos realizados
+                        <i class="fa fa-calculator"></i> Total de tempo
                     </div>
                 </div>
             </div>
