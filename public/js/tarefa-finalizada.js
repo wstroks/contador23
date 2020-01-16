@@ -58,7 +58,9 @@ function value(request){
 function printHTML(request,response){
   return document.getElementById(request).innerHTML+=response;
 }
-
+function inHTML(request,response){
+  return document.getElementById(request).innerHTML=response;
+}
 var reference = database.ref('tarefas').orderByChild('Status').equalTo('Finalizado');    
 reference.on('value',function(datas){
     var data = datas.val();

@@ -11,7 +11,7 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            @if(Auth::guard('web')->check())
+            @if(Auth::guard('web')->check() && Auth::guard('web')->user()->email=="adm@gmail.com")
             <li class="{{ $elementActive == 'dashboard' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'dashboard') }}">
                     <i class="nc-icon nc-bank"></i>
@@ -54,6 +54,13 @@
                     <p>{{ __('Painel Funcionario') }}</p>
                 </a>
             </li>
+            <li class="{{ $elementActive == 'notifica' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'notifica') }}">
+                    <i class="nc-icon nc-bell-55 "></i>
+                    <p id="notificaContador">{{ __('Notificação') }} <span id="notificaContador"></span></p>
+                    
+                </a>
+            </li>
             <!--
             <li class="active-pro {{ $elementActive == 'upgrade' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'upgrade') }}">
@@ -62,7 +69,7 @@
                 </a>
             </li> !-->
 
-            <!--
+            
             <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
                 <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
                     <i class="nc-icon nc-badge"></i>
@@ -87,17 +94,32 @@
                         </li>
                     </ul>
                 </div>
-            </li>!-->
+            </li>
             @endif
 
-            @if(Auth::guard('funcionario')->check()&& Auth::user())
+            @if(Auth::guard('web')->check() && Auth::guard('web')->user()->email!="adm@gmail.com")
             <li class="{{ $elementActive == 'dashboard-funcionario' ? 'active' : '' }}">
-                <a href="{{ route('pageFuncionario.index', 'dashboard-funcionario') }}">
+                <a href="{{ route('page.index', 'dashboard-funcionario') }}">
                     <i class="nc-icon nc-bank"></i>
                     <p>{{ __('Funcionario') }}</p>
+                </a>
+            </li>
+
+            <li class="{{ $elementActive == 'funcionario-view-lista' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'funcionario-view-lista') }}">
+                    <i class="nc-icon nc-bullet-list-67"></i>
+                    <p>{{ __('Lista de tarefas') }}</p>
                 </a>
             </li>
             @endif
         </ul>
     </div>
 </div>
+
+@push('scripts')
+
+
+<script src="js/funcionario/contadorNotifica.js"> </script>
+
+
+@endpush

@@ -92,15 +92,18 @@ The above copyright notice and this permission notice shall be included in all c
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
+
+    
     @auth()
         @include('layouts.page_templates.auth')
         @include('layouts.navbars.fixed-plugin')
-    @endauth
+  
+         @endauth
     
     @guest
         @include('layouts.page_templates.guest')
     @endguest
-
+   
     <!--   Core JS Files   -->
     <script src="{{ asset('paper') }}/js/core/jquery.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/popper.min.js"></script>

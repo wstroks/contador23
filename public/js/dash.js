@@ -16,7 +16,7 @@ function value(request){
   function inHTML(request,response){
     return document.getElementById(request).innerHTML=response;
 }
-  
+
 var ref = database.ref('funcionario').orderByChild('Nome');    
     ref.on('value',function(datas){
         

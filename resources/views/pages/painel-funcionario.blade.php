@@ -4,6 +4,7 @@
 ])
 
 @section('content')
+@if(Auth::guard('web')->check() && Auth::guard('web')->user()->email=="adm@gmail.com")
 <div class="content">
     <div class="row">
 
@@ -190,7 +191,7 @@
     </div>
 </div>
 
-
+@endif
     
 
 @endsection

@@ -6,6 +6,19 @@
 @section('content')
     <div class="content">
         <div class="row">
+
+            
+                <div class="col-md-12">
+                    <div class="card text-white text-center bg-primary mb-3" >
+                        <div class="card-header ">
+                            <h5 class="card-title">  <span id="usuarioNome">{{Auth::guard('web')->user()->name}}</span></h5>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-body ">
@@ -98,7 +111,7 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category ">Funcionários</p>
+                                    <p class="card-category "> Tempo</p>
                                 <p class="card-title" id="tempo">
                                    
                                 </p>
@@ -109,33 +122,14 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-calculator"></i> Quantidade de funcionários 
+                            <i class="fa fa-calculator"></i> Total de horas
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card ">
-                    <div class="card-header ">
-                        <h5 class="card-title">Gráfico de quantidade de trabalhos feito no prazo</h5>
-                        <p class="card-category">Performance positiva dos funcionários</p>
-                    </div>
-                    <div class="card-body ">
-                        <canvas id="primeiroGrafico" width="400" height="100"></canvas>
-                    </div>
-                    <div class="card-footer ">
-                        <hr>
-                        <div class="stats">
-                            <i class="fa fa-history"></i> Atualizado
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!--
 
 
         <div class="row">
@@ -157,6 +151,51 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+
+        <div class="card">
+            <div class="card-header">
+             <h5>  Lista de Tarefas </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th scope="col">
+                                Titulo
+                            </th scope="col">
+                            
+                            <th scope="col">
+                                Descritivo da Tarefa
+                            </th scope="col">
+                            <th scope="col">
+                                Data
+                            </th>
+                            <th scope="col">
+                                Horas
+                            </th>
+
+                            <th scope="col">
+                                Tempo estimado
+                            </th>
+
+                            <th scope="col">
+                                Status da Tarefa
+                            </th>
+
+                            
+                            
+                        </thead>
+
+
+                        <tbody id="ex-table1">
+                            <tr id="tr">
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
        
     </div>
@@ -165,7 +204,7 @@
 @push('scripts')
 
 
-<script src="js/dash.js"> </script>
+<script src="js/funcionario/dashboard-funcionario.js"> </script>
 <!--
     <script>
         $(document).ready(function() {

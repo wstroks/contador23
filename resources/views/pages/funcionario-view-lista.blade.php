@@ -1,10 +1,9 @@
 @extends('layouts.app', [
     'class' => '',
-    'elementActive' => 'tarefas'
+    'elementActive' => 'funcionario-view-lista'
 ])
 
 @section('content')
-@if(Auth::guard('web')->check() && Auth::guard('web')->user()->email=="adm@gmail.com")
 <div class="content">
     <div class="row">
         <div class="col-md-12">
@@ -12,11 +11,11 @@
 
             <div class="card">
                 <div class="card-header">
-                 <h5>  Lista de Tarefas </h5>
+                 <h5>  Lista de tarefas finalizadas por <span id="usuarioNome">{{Auth::guard('web')->user()->name}}</span></h5>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table" id="ex-table1">
+                        <table class="table">
                             <thead class=" text-primary">
                                 <th scope="col">
                                     Titulo
@@ -59,11 +58,12 @@
         </div>
     </div>
 </div>
-@endif
 @endsection
 
 @push('scripts')
 
-<script src="js/tarefa-finalizada.js"> </script>
+
+<script src="js/funcionario/listaTask.js"> </script>
+
 
 @endpush

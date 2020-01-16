@@ -10,8 +10,8 @@ class PagesFuncionarioController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:funcionario');
-        //$this->middleware('auth:web');
+        $this->middleware('auth');
+        
     }
 
     /**

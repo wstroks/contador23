@@ -1,10 +1,9 @@
 @extends('layouts.app', [
     'class' => '',
-    'elementActive' => 'tarefas'
+    'elementActive' => 'notifica'
 ])
 
 @section('content')
-@if(Auth::guard('web')->check() && Auth::guard('web')->user()->email=="adm@gmail.com")
 <div class="content">
     <div class="row">
         <div class="col-md-12">
@@ -12,42 +11,29 @@
 
             <div class="card">
                 <div class="card-header">
-                 <h5>  Lista de Tarefas </h5>
+                 <h5>  Lista de sinalização que alguns funcionarios ja terminaram o serviço, faltando sua aprovação </h5>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table" id="ex-table1">
+                        <table class="table">
                             <thead class=" text-primary">
                                 <th scope="col">
                                     Titulo
                                 </th scope="col">
                                 <th scope="col">
-                                    Funcionário
+                                    Descritivo
                                 </th scope="col">
                                 <th scope="col">
-                                    Descritivo da Tarefa
+                                    Nome
                                 </th scope="col">
-                                <th scope="col">
-                                    Data
-                                </th>
-                                <th scope="col">
-                                    Horas
-                                </th>
-
-                                <th scope="col">
-                                    Tempo estimado
-                                </th>
-
-                                <th scope="col">
-                                    Status da Tarefa
-                                </th>
+                               
 
                                 
                                 
                             </thead>
 
 
-                            <tbody id="ex-table1">
+                            <tbody id="ex-table100">
                                 <tr id="tr">
 
                                 </tr>
@@ -59,11 +45,12 @@
         </div>
     </div>
 </div>
-@endif
 @endsection
 
 @push('scripts')
 
-<script src="js/tarefa-finalizada.js"> </script>
+
+<script src="js/funcionario/notifica.js"> </script>
+
 
 @endpush

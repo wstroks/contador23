@@ -4,6 +4,7 @@
 ])
 
 @section('content')
+@if(Auth::guard('web')->check() && Auth::guard('web')->user()->email=="adm@gmail.com")
 <div class="content">
     <div class="row">
         <div class="col-md-12">
@@ -132,6 +133,7 @@
 
 
 </div>
+@endif
 @endsection
 
 @push('scripts')
