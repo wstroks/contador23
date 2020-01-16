@@ -19,7 +19,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+/*
 Route::group(['middleware' => 'funcionario'], function () {
 	Route::middleware('auth:funcionario')->group(function () {
 	Route::get('funcionarios-view','FuncionarioController@index');
@@ -32,7 +32,7 @@ Route::group(['middleware' => 'funcionario'], function () {
 	Route::get('funcionarios-view/logout','FuncionarioController@logout');
 
 	
-});
+});*/
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
