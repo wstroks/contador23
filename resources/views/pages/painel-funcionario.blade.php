@@ -105,7 +105,33 @@
             </div>
         </div>
         
-
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-settings text-info"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category ">em andamento</p>
+                            <p class="card-title" id="andamento">
+                               
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                        <i class="fa fa-calculator"></i> Trabalhos em andamento
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
@@ -159,14 +185,20 @@
                                     Descritivo da Tarefa
                                 </th scope="col">
                                 <th scope="col">
-                                    Data
+                                    Horário de início
                                 </th>
-                                <th scope="col">
-                                    Horas
-                                </th>
+                                
 
                                 <th scope="col">
                                     Tempo estimado
+                                </th>
+
+                                <th scope="col">
+                                    Prazo para finalizar
+                                </th>
+
+                                <th scope="col">
+                                    Finalizado no dia
                                 </th>
 
                                 <th scope="col">

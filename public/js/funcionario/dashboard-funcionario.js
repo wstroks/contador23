@@ -5,6 +5,11 @@ var estimaC=[];
 var labelT=[];
 var estimaT=[];
 
+var h=0;
+var m=0;
+var contador=0;
+var calculo = 0;
+
 function value(request){
     
     return  document.getElementById(request).value;
@@ -23,7 +28,9 @@ var ref = database.ref('funcionario').orderByChild('Nome');
         var filtro = document.getElementById('usuarioNome').innerText;
         console.log(filtro);
     
-    
+        h=0;
+        m=0;
+        contador=0;
         var data = datas.val();
         
         $.each(data, function(nodo, value) {
@@ -31,18 +38,19 @@ var ref = database.ref('funcionario').orderByChild('Nome');
                 var sendData = dadosHoras(value.Horas,value.Minutos);
                 var sendData1=dadosComprido(value.tarefasComprindas);
                 var sendData2=dadosAtrasadas(value.tarefasAtrasadas);
-                var sendData3=dadosInfo(value.tarefasComprindas,value.tarefasAtrasadas);
-
+                var sendData3=dadosInfo(value.tarefasComprindas,value.tarefasAtrasadas,value.tarefasemAndamento);
+                var sendData4=emAndamento(value.tarefasemAndamento)
                 
-                labelC.push(value.Nome);
-                estimaC.push(parseInt(value.tarefasComprindas));
+                //labelC.push(value.Nome);
+                //estimaC.push(parseInt(value.tarefasComprindas));
 
-                labelT.push(value.Nome);
-                estimaT.push(parseInt(value.tarefasAtrasadas));
+                //labelT.push(value.Nome);
+                //estimaT.push(parseInt(value.tarefasAtrasadas));
                 printHTML('tempo',sendData);
                 printHTML('compridos',sendData1);
                 printHTML('atrasados',sendData2);
-               printHTML('info',sendData3);}
+                printHTML('info',sendData3);
+                printHTML('andamento',sendData4);}
 
                 //printTabela(Selecionado);
 
@@ -57,12 +65,12 @@ var ref2 = database.ref('tarefas').orderByChild('Nome');
         var filtro = document.getElementById('usuarioNome').innerText;
         console.log(filtro);
     
-    
+        inHTML("ex-table1","");
         var data = datas.val();
         
         $.each(data, function(nodo, value) {
                 if(filtro==value.Nome && value.Status=="Em andamento"){
-                var sendData1 = dadosFuncionario(value.Titulo,value.Descritivo,  value.dataInicio, value.horasInicio,value.estimativaHoras,value.Status,value.Nome);
+                var sendData1 = dadosFuncionario(value.Titulo,value.Descritivo,  value.dataInicio, value.horasInicio,value.estimativaHoras,value.Status,value.Nome,value.estimativadataFinalizar,value.estimativahorasFinalizar,value.dataTermino,value.horasTermino);
                 
                 printHTML('ex-table1',sendData1);
                 
@@ -74,9 +82,7 @@ var ref2 = database.ref('tarefas').orderByChild('Nome');
  
 });
 
-var h=0;
-var m=0;
-var contador=0;
+
 function dadosHoras(Horas,Minutos){
     inHTML("tempo","");
     contador+=1;
@@ -104,33 +110,41 @@ function dadosHoras(Horas,Minutos){
     return h + 'H ' + m+'M';
             
 }
-var tarefasC=0;
+
+function emAndamento(tarefasemAndamento){
+    inHTML("andamento","");
+    //tarefasAndamento+=  parseInt(tarefasemAndamento);
+    //tarefasEm+=parseInt(tarefasemAndamento);
+    return tarefasemAndamento;
+}
+
+//var tarefasC=0;
 function dadosComprido(tarefasCompridas){
     inHTML("compridos","");
-    tarefasC+=  parseInt(tarefasCompridas);
-    return tarefasC;
+    //tarefasC+=  parseInt(tarefasCompridas);
+    return tarefasCompridas;
             
                 
 }
-var tarefasA=0;
+//var tarefasA=0;
 function  dadosAtrasadas(tarefasAtrasadas){
     inHTML("atrasados","");
-    tarefasA+= parseInt(tarefasAtrasadas);
-    return  tarefasA;
+    //tarefasA+= parseInt(tarefasAtrasadas);
+    return  tarefasAtrasadas;
 }
-var calculo = 0;
- function dadosInfo(tarefasCompridas, tarefasAtrasadas){
+
+ function dadosInfo(tarefasCompridas, tarefasAtrasadas,tarefasemAndamento){
     inHTML("info","");
-     calculo += parseInt(tarefasCompridas)+parseInt(tarefasAtrasadas)
+     calculo = parseInt(tarefasCompridas)+parseInt(tarefasAtrasadas)+parseInt(tarefasemAndamento);
     return calculo;
  }
 
 
- function dadosFuncionario(Titulo, Descritivo, dataInicio, horasInicio,estimativaHoras,Status,Nome){
-    inHTML("ex-table1","");
-    return '<tr><td>'+Titulo+'</td><td>'+Descritivo+'</td>'+
-    '<td>'+dataInicio+' </td> <td>'+horasInicio+'</td> <td>'+estimativaHoras+'</td> <td>'+Status+ '</td>'+
-    '<td class="text-right"><button  type="submit" class="btn btn-success btn-round" onclick="notificaTask(\''+Titulo+'\',\''+Descritivo+'\',\''+Nome+'\')" >Notificar termino</button></td>';
+ function dadosFuncionario(Titulo, Descritivo, dataInicio, horasInicio,estimativaHoras,Status,Nome,estimativadataFinalizar,estimativahorasFinalizar,dataTermino,horasTermino){
+   
+    return '<tr><td>'+Titulo+'</td><td>'+Nome+'</td><td>'+Descritivo+'</td>'+
+    '<td>'+dataInicio+' '+horasInicio+' </td> <td>'+estimativaHoras+'</td> <td>'+estimativadataFinalizar+' '+estimativahorasFinalizar+'</td>  <td>'+Status +'</td>'+
+    '<td class="text-right"><button  type="submit" class="btn btn-success btn-round" onclick="notificaTask(\''+Titulo+'\',\''+Descritivo+'\',\''+Nome+'\')" >Notificar termino</button></td></tr>';
   
 
  }

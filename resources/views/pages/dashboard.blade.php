@@ -7,6 +7,17 @@
 @if(Auth::guard('web')->check() && Auth::guard('web')->user()->email=="adm@gmail.com")
     <div class="content">
         <div class="row">
+
+            <div class="col-md-12">
+                <div class="card text-white text-center bg-primary mb-3" >
+                    <div class="card-header ">
+                        <h5 class="card-title">  <span id="usuarioNome">{{Auth::guard('web')->user()->name}}</span></h5>
+                        
+                    </div>
+                    
+                    
+                </div>
+            </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-body ">
@@ -86,7 +97,33 @@
                     </div>
                 </div>
             </div>
-            
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-5 col-md-4">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="nc-icon nc-settings text-info"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-md-8">
+                                <div class="numbers">
+                                    <p class="card-category ">em andamento</p>
+                                <p class="card-title" id="andamento">
+                                   
+                                </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer ">
+                        <hr>
+                        <div class="stats">
+                            <i class="fa fa-calculator"></i> Trabalhos em andamento
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">

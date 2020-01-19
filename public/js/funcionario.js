@@ -14,18 +14,19 @@ function submitForm(e){
     var Minutos =0;
     var tarefasComprindas = 0;
     var tarefasAtrasadas=0;
+    var tarefasemAndamento=0;
 
 
     console.log(Nome +" " + Cargo);
 
-    saveFuncionario(Nome, Cargo, Email, Horas,Minutos, tarefasAtrasadas,tarefasComprindas);
+    saveFuncionario(Nome, Cargo, Email, Horas,Minutos, tarefasAtrasadas,tarefasComprindas,tarefasemAndamento);
 }
 
 function getInputVal(id){
     return document.getElementById(id).value;
 }
 
-function saveFuncionario(Nome, Cargo, Email, Horas,Minutos,tarefasAtrasadas,tarefasComprindas){
+function saveFuncionario(Nome, Cargo, Email, Horas,Minutos,tarefasAtrasadas,tarefasComprindas,tarefasemAndamento){
     //var novoFuncionario = cadastroFuncionario.push().key();
     
     const autoId= rooRef.push().key;
@@ -36,7 +37,8 @@ function saveFuncionario(Nome, Cargo, Email, Horas,Minutos,tarefasAtrasadas,tare
          Horas: Horas,
          Minutos: Minutos,
          tarefasAtrasadas: tarefasAtrasadas,
-         tarefasComprindas: tarefasComprindas
+         tarefasComprindas: tarefasComprindas,
+         tarefasemAndamento: tarefasemAndamento
     });
     //window.location.reload();
     

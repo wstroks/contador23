@@ -5,23 +5,45 @@ var estimaC=[];
 var labelT=[];
 var estimaT=[];
 
+var calculo = 0;
+var tarefasC=0;
+var contador=0;
+var tarefasEm=0;
+var tarefasA=0;
 function value(request){
     
     return  document.getElementById(request).value;
   }
   function printHTML(request,response){
+    
     return document.getElementById(request).innerHTML+=response;
   }
 
   function inHTML(request,response){
+      
     return document.getElementById(request).innerHTML=response;
 }
 
 var ref = database.ref('funcionario').orderByChild('Nome');    
     ref.on('value',function(datas){
+        /*
+        inHTML('tempo',"");
+        inHTML('compridos',"");
+        inHTML('atrasados',"");
+        inHTML('info',"");
+        inHTML('andamento',"");*/
+        calculo = 0;
+        tarefasC=0;
+        contador=0;
+        tarefasEm=0;
+        tarefasA=0;
+        labelC=[];
+        estimaC=[];
         
-    
-    
+        labelT=[];
+        estimaT=[];
+
+      
     
         var data = datas.val();
         
@@ -29,16 +51,25 @@ var ref = database.ref('funcionario').orderByChild('Nome');
                 var sendData = dadosHoras(value.Horas,value.Minutos);
                 var sendData1=dadosComprido(value.tarefasComprindas);
                 var sendData2=dadosAtrasadas(value.tarefasAtrasadas);
-                var sendData3=dadosInfo(value.tarefasComprindas,value.tarefasAtrasadas);
+                var sendData3=dadosInfo(value.tarefasComprindas,value.tarefasAtrasadas,value.tarefasemAndamento);
+                var sendData4=emAndamento(value.tarefasemAndamento);
                 labelC.push(value.Nome);
                 estimaC.push(parseInt(value.tarefasComprindas));
 
                 labelT.push(value.Nome);
                 estimaT.push(parseInt(value.tarefasAtrasadas));
+
+                inHTML('tempo',"");
+                inHTML('compridos',"");
+                inHTML('atrasados',"");
+                inHTML('info',"");
+                inHTML('andamento',"");
+
                 printHTML('tempo',sendData);
                 printHTML('compridos',sendData1);
                 printHTML('atrasados',sendData2);
                 printHTML('info',sendData3);
+                printHTML('andamento',sendData4);
 
                 //printTabela(Selecionado);
 
@@ -47,10 +78,20 @@ var ref = database.ref('funcionario').orderByChild('Nome');
         
  
     });
+    
+  
+//var tarefasAndamento=0;
+
+function emAndamento(tarefasemAndamento){
+    inHTML("andamento","");
+    //tarefasAndamento+=  parseInt(tarefasemAndamento);
+    tarefasEm+=parseInt(tarefasemAndamento);
+    return tarefasEm;
+}
 
 var h=0;
 var m=0;
-var contador=0;
+
 function dadosHoras(Horas,Minutos){
     inHTML("tempo","");
     contador+=1;
@@ -78,7 +119,7 @@ function dadosHoras(Horas,Minutos){
     return contador;
             
 }
-var tarefasC=0;
+
 function dadosComprido(tarefasCompridas){
     inHTML("compridos","");
     tarefasC+=  parseInt(tarefasCompridas);
@@ -86,25 +127,27 @@ function dadosComprido(tarefasCompridas){
             
                 
 }
-var tarefasA=0;
+
 function  dadosAtrasadas(tarefasAtrasadas){
     inHTML("atrasados","");
     tarefasA+= parseInt(tarefasAtrasadas);
     return  tarefasA;
 }
-var calculo = 0;
- function dadosInfo(tarefasCompridas, tarefasAtrasadas){
+
+ function dadosInfo(tarefasCompridas, tarefasAtrasadas,tarefasemAndamento){
     inHTML("info","");
-     calculo += parseInt(tarefasCompridas)+parseInt(tarefasAtrasadas)
+     calculo += parseInt(tarefasCompridas)+parseInt(tarefasAtrasadas)+parseInt(tarefasemAndamento);
     return calculo;
  }
 
 
  function grafico(){
+    inHTML("primeiroGrafico","");
+    inHTML("segundoGrafico","");
     Chart.defaults.horizontalBar;
     var ctx = document.getElementById('primeiroGrafico').getContext('2d');
     var myChart = new Chart(ctx, {
-      type: 'horizontalBar',
+      type: 'bar',
       data: {
           labels: labelC,
           datasets: [{
@@ -141,12 +184,12 @@ var calculo = 0;
       }
   });
   
-  
+  //horizontalBar
   
   var ctx = document.getElementById('segundoGrafico').getContext('2d');
     var myChart = new Chart(ctx, {
       responsive: true,
-      type: 'horizontalBar',
+      type: 'bar',
       data: {
           labels: labelT,
           datasets: [{

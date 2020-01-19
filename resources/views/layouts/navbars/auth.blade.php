@@ -117,9 +117,9 @@
 </div>
 
 @push('scripts')
-
-
+<!-- add pra notificação funcionario não bugar -->
+@if(Auth::guard('web')->check() && Auth::guard('web')->user()->email=="adm@gmail.com")
 <script src="js/funcionario/contadorNotifica.js"> </script>
-
+@endif
 
 @endpush

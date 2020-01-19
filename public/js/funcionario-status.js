@@ -15,10 +15,10 @@ function value(request){
   
   
   
-  function table(Titulo, Nome, Descritivo, dataInicio, horasInicio,estimativaHoras,Status){
+  function table(Titulo, Nome, Descritivo, dataInicio, horasInicio,estimativaHoras,Status,estimativadataFinalizar,estimativahorasFinalizar,dataTermino,horasTermino){
     
     return '<tr><td>'+Titulo+'</td><td>'+Nome+'</td><td>'+Descritivo+'</td>'+
-    '<td>'+dataInicio+' </td> <td>'+horasInicio+'</td> <td>'+estimativaHoras+'</td> <td>'+Status+ '</td>';
+  '<td>'+dataInicio+' '+horasInicio+' </td> <td>'+estimativaHoras+'</td> <td>'+estimativadataFinalizar+' '+estimativahorasFinalizar+'</td> <td>'+dataTermino+' '+ horasTermino+'</td> <td>'+Status +'</td>';
    
   }
 
@@ -33,7 +33,8 @@ function value(request){
     inHTML("compridos","");
     inHTML("atrasados","");
     inHTML("info","");
-    //inHTML("ex-table1","");
+    inHTML("andamento","");
+    inHTML("ex-table1","");
     
     var ref = database.ref('funcionario').orderByChild('Nome').equalTo(Selecionado);    
     ref.on('value',function(datas){
@@ -44,10 +45,18 @@ function value(request){
                 var sendData1=dadosComprido(value.tarefasComprindas);
                 var sendData2=dadosAtrasadas(value.tarefasAtrasadas);
                 var sendData3=dadosInfo(value.tarefasComprindas,value.tarefasAtrasadas);
+                var sendData4=emAndamento(value.tarefasemAndamento);
+                inHTML("tempo","");
+                inHTML("compridos","");
+                inHTML("atrasados","");
+                inHTML("info","");
+                inHTML("andamento","");
+
                 printHTML('tempo',sendData);
                 printHTML('compridos',sendData1);
                 printHTML('atrasados',sendData2);
                 printHTML('info',sendData3);
+                printHTML("andamento",sendData4);
 
                 printTabela(Selecionado);
 
@@ -64,16 +73,22 @@ function printTabela(Selecionado){
     inHTML("ex-table1","");
     var reference = database.ref('tarefas');    
     reference.on('value',function(datas){
+      inHTML("ex-table1","");
         var data = datas.val();
         $.each(data, function(nodo, value) {
             if(Selecionado==value.Nome){
-                var sendData = table(value.Titulo,value.Nome,value.Descritivo,value.dataInicio,value.horasInicio,value.estimativaHoras,value.Status);
-                
+                var sendData = table(value.Titulo,value.Nome,value.Descritivo,value.dataInicio,value.horasInicio,value.estimativaHoras,value.Status,value.estimativadataFinalizar,value.estimativahorasFinalizar,value.dataTermino,value.horasTermino);
+                //
                 printHTML('ex-table1',sendData);}
+                
         });       
     });
 }
-
+function emAndamento(tarefasemAndamento){
+    
+    
+    return tarefasemAndamento;
+}
 function dadosHoras(Horas,Minutos,Nome){
        
 return Horas+ 'H ' + Minutos+'M';
@@ -98,9 +113,10 @@ function  dadosAtrasadas(tarefasAtrasadas){
     return calculo;
  }
 
-
+ //inHTML("listar-select","");
  firebase.database().ref('funcionario').orderByChild('Nome').on('value', function (snapshot){
     var content = '';
+    inHTML("listar-select","");
     snapshot.forEach(function(item) {
         
        /* 

@@ -18,14 +18,14 @@ reference.on('value',function(datas){
     var data = datas.val();
     $.each(data, function(nodo, value) {
         if(filtro==value.Nome){
-            var sendData = table(value.Titulo,value.Nome,value.Descritivo,value.dataInicio,value.horasInicio,value.estimativaHoras,value.Status);
+            var sendData = table(value.Titulo,value.Nome,value.Descritivo,value.dataInicio,value.horasInicio,value.estimativaHoras,value.Status,value.estimativadataFinalizar,value.estimativahorasFinalizar,value.dataTermino,value.horasTermino);
             printHTML('ex-table1',sendData);
         }
     });       
 });
 
-function table(Titulo, Nome, Descritivo, dataInicio, horasInicio,estimativaHoras,Status){
+function table(Titulo, Nome, Descritivo, dataInicio, horasInicio,estimativaHoras,Status,estimativadataFinalizar,estimativahorasFinalizar,dataTermino,horasTermino){
     
-  return '<tr><td>'+Titulo+'</td><td>'+Nome+'</td><td>'+Descritivo+'</td>'+
-  '<td>'+dataInicio+' </td> <td>'+horasInicio+'</td> <td>'+estimativaHoras+'</td> <td>'+Status+ '</td>';
+  return '<tr><td>'+Titulo+'</td>'+'<td>'+Descritivo+'</td>'+
+  '<td>'+dataInicio+' '+horasInicio+' </td> <td>'+estimativaHoras+'</td> <td>'+estimativadataFinalizar+' '+estimativahorasFinalizar+'</td> <td>'+dataTermino+' '+ horasTermino+'</td> <td>'+Status +'</td>';
 }

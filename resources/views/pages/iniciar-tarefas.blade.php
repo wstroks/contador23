@@ -28,14 +28,16 @@
                                         Descritivo da Tarefa
                                     </th scope="col">
                                     <th scope="col">
-                                        Data
+                                        Horário de início
                                     </th>
-                                    <th scope="col">
-                                        Horas
-                                    </th>
+                                    
     
                                     <th scope="col">
                                         Tempo estimado
+                                    </th>
+
+                                    <th scope="col">
+                                        Prazo para finalizar
                                     </th>
     
                                     <th scope="col">

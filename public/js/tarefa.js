@@ -6,8 +6,16 @@ const database = firebase.database();
 const Selecionado2 = $("#listar-select option:selected").text();
 
 
-        
-function saveTarefa(Titulo, Descritivo, dataInicio,horasInicio,dataTermino,horasTermino, estimativaHoras, Selecionado){
+function value(request){
+    return  document.getElementById(request).value;
+  }
+  function printHTML(request,response){
+    return document.getElementById(request).innerHTML+=response;
+  }
+  function inHTML(request,response){
+    return document.getElementById(request).innerHTML=response;
+  }        
+function saveTarefa(Titulo, Descritivo, dataInicio,horasInicio,dataTermino,horasTermino, estimativaHoras, Selecionado,estimativadataFinalizar,estimativahorasFinalizar){
     //var novoFuncionario = cadastroFuncionario.push().key();
     var Nome = Selecionado
     var Status="aberto"
@@ -22,6 +30,8 @@ function saveTarefa(Titulo, Descritivo, dataInicio,horasInicio,dataTermino,horas
         dataTermino: dataTermino, 
         horasTermino:horasTermino,
         estimativaHoras: estimativaHoras,
+        estimativadataFinalizar:estimativadataFinalizar,
+        estimativahorasFinalizar:estimativahorasFinalizar ,
         Status: Status
         
     });
@@ -45,16 +55,19 @@ function submitTarefa(e){
     var horasInicio= "não atribuido";
     var dataTermino = "não atribuido";
     var horasTermino= "não atribuido";
+    var estimativadataFinalizar="não atribuido";
+    var estimativahorasFinalizar="não atribuido";
     var estimativaHoras = getInputVal('horas');
 
     console.log(Titulo,Descritivo +" " + dataInicio +" " + horasInicio +" " + estimativaHoras);
 
-    saveTarefa(Titulo,Descritivo, dataInicio,horasInicio, dataTermino, horasTermino,estimativaHoras, Selecionado);
+    saveTarefa(Titulo,Descritivo, dataInicio,horasInicio, dataTermino, horasTermino,estimativaHoras, Selecionado,estimativadataFinalizar,estimativahorasFinalizar);
 }
 
 
 firebase.database().ref('funcionario').orderByChild('Nome').on('value', function (snapshot){
     var content = '';
+    inHTML('listar-select',"");
     snapshot.forEach(function(item) {
        /* 
         //var th1=document.createElement('td');

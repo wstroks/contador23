@@ -11,7 +11,7 @@
 
             <div class="card">
                 <div class="card-header">
-                 <h5>  Lista de tarefas finalizadas por <span id="usuarioNome">{{Auth::guard('web')->user()->name}}</span></h5>
+                 <h5>  Lista de tarefas de <span id="usuarioNome">{{Auth::guard('web')->user()->name}}</span></h5>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -20,21 +20,25 @@
                                 <th scope="col">
                                     Titulo
                                 </th scope="col">
-                                <th scope="col">
-                                    Funcionário
-                                </th scope="col">
+                                
                                 <th scope="col">
                                     Descritivo da Tarefa
                                 </th scope="col">
                                 <th scope="col">
-                                    Data
+                                    Horário de início
                                 </th>
-                                <th scope="col">
-                                    Horas
-                                </th>
+                                
 
                                 <th scope="col">
                                     Tempo estimado
+                                </th>
+
+                                <th scope="col">
+                                    Prazo para finalizar
+                                </th>
+
+                                <th scope="col">
+                                    Finalizado no dia
                                 </th>
 
                                 <th scope="col">

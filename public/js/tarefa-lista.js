@@ -32,9 +32,10 @@ firebase.database().ref('tarefas/').orderByChild('Nome').on('value', function (s
       content += '<td>'+val.Titulo+'</td>';
       content += '<td>'+val.Nome+'</td>';
       content += '<td>'+val.Descritivo+'</td>';
-      content += '<td>'+val.dataInicio+'</td>';
-      content += '<td>'+val.horasInicio+'</td>';
+      content += '<td>'+val.dataInicio+' '+val.horasInicio+'</td>';
+      
       content += '<td>'+val.estimativaHoras+'</td>';
+      content += '<td>'+val.estimativadataFinalizar+' '+val.estimativahorasFinalizar+'</td>';
       content += '<td>'+val.Status+'</td>';
       var key2=""
       var key= item.key;
@@ -47,7 +48,7 @@ firebase.database().ref('tarefas/').orderByChild('Nome').on('value', function (s
       estimativaHoras = val.estimativaHoras;
       Status = val.Status;
      if(val.Status != "Em andamento"){
-     content += '<td class="text-right"><button  type="submit" class="btn btn-success btn-round" onclick="iniciarTask(\''+key+'\')" > Iniciar</button></td>';
+     content += '<td class="text-right"><button  type="submit" class="btn btn-success btn-round" onclick="iniciarTask(\''+key+'\',\''+estimativaHoras+'\')" > Iniciar</button></td>';
      }else{
         content += '<td class="text-right"><button  type="submit" class="btn btn btn-dark btn-round" onclick="finalizarTask(\''+key+'\')" > Finalizar</button></td>';
      }
@@ -121,12 +122,26 @@ function removeTask(key){
     }
 }
 
-function iniciarTask(key){
+function iniciarTask(key,estimativaHoras){
     
     var fh = new Date();
+    var x = new Date();
+    var arrayEstima= estimativaHoras.split(':');
+    console.log(arrayEstima[0] +' ' + arrayEstima[1]);
+    x.setDate(fh.getDate());
+    x.setMonth(fh.getMonth()+1);
+    x.setFullYear(fh.getFullYear());
+    x.setHours(fh.getHours()+parseInt(arrayEstima[0]));
+    x.setMinutes(fh.getMinutes()+parseInt(arrayEstima[1]));
+
+    console.log(x.getDate()+ ' vai');
+    /*var inicio= Date.now()
     console.log( key);
-    /**var Titulo= val.Titulo;
+    var arrayEstima= estimativaHoras.split(':');*/
+    //console.log(arrayEstima[0] +' ' + arrayEstima[1]);
     
+    /**var Titulo= val.Titulo;
+    var 
     var Descritivo = val.Descritivo;
     var dataInicio  = "s";
     var horasInicio = "a";
@@ -138,8 +153,10 @@ function iniciarTask(key){
         //Titulo: Titulo,
        // Descritivo: Descritivo,
         dataInicio: fh.getDate()+"/"+ (fh.getMonth()+1) +"/"+fh.getFullYear(),
-        horasInicio: +fh.getHours()+":"+fh.getMinutes(),
-        //estimativaHoras: estimativaHoras,
+        horasInicio: fh.getHours()+":"+fh.getMinutes(),
+        estimativadataFinalizar: x.getDate()+"/"+ (x.getMonth()) +"/"+x.getFullYear(),
+        estimativahorasFinalizar: x.getHours()+":"+x.getMinutes(),
+       
         Status: "Em andamento"
     }
     inHTML("ex-table1","");    
