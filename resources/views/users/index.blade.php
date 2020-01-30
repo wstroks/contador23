@@ -12,10 +12,10 @@
                         <div class="card-header border-0">
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <h3 class="mb-0">{{ __('Users') }}</h3>
+                                    <h3 class="mb-0">{{ __('Lista de Funcionários') }}</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add user') }}</a>
+                                    <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Adicionar Funcionário') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -32,19 +32,20 @@
                         </div>
 
                         <div class="table-responsive">
-                            <table class="table align-items-center table-flush">
+                            <table id='tabelaBanco' class="table align-items-center table-flush">
                                 <thead class="thead-light">
-                                    <tr>
+                                    <tr scope="row">
                                         <th scope="col">{{ __('Name') }}</th>
                                         <th scope="col">{{ __('Email') }}</th>
-                                        <th scope="col">{{ __('Creation Date') }}</th>
+                                        <th scope="col">{{ __('Data de Criação') }}</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
+                                    @if($user->name !="Supervisor Onix")
                                         <tr>
-                                            <td>{{ $user->name }}</td>
+                                            <td id="nome-x">{{ $user->name }}</td>
                                             <td>
                                                 <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                                             </td>
@@ -60,9 +61,9 @@
                                                                 @csrf
                                                                 @method('delete')
                                                                 
-                                                                <a class="dropdown-item" href="{{ route('user.edit', $user) }}">{{ __('Edit') }}</a>
-                                                                <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
-                                                                    {{ __('Delete') }}
+                                                               <!-- <a class="dropdown-item" href="{{ route('user.edit', $user) }}">{{ __('Edit') }}</a> -->
+                                                                <button id="btn" type="button" class="dropdown-item" onclick="ID('{{$user->name}}'); confirm('{{ __("Tem certeza de que deseja excluir este usuário?") }}') ? this.parentElement.submit() : ''">
+                                                                    {{ __('Deletar') }}
                                                                 </button>
                                                             </form>    
                                                         @else
@@ -72,6 +73,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                     @endif
                                     @endforeach
                                 </tbody>
                             </table>
@@ -87,3 +89,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script src={{URL::asset("js/funcionario.js")}}> </script>
+@endpush

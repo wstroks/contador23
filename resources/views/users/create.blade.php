@@ -12,15 +12,15 @@
                         <div class="card-header bg-white border-0">
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <h3 class="mb-0">{{ __('User Management') }}</h3>
+                                    <h3 class="mb-0">{{ __('Cadastro de Usuário') }}</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <a href="{{ route('user.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                    <a href="{{ route('user.index') }}" class="btn btn-sm btn-primary">{{ __('Voltar a lista') }}</a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="{{ route('user.store') }}" autocomplete="off">
+                            <form  method="post" action="{{ route('user.store') }}" autocomplete="off">
                                 @csrf
                                 
                                 <h6 class="heading-small text-muted mb-4">{{ __('User information') }}</h6>
@@ -35,6 +35,18 @@
                                             </span>
                                         @endif
                                     </div>
+
+                                    
+                                        
+                                        
+                                            <div class="form-group">
+                                                <label class="form-control-label">{{ __('Cargo') }}</label>
+                                                <input type="text" id="Cargo" name="Cargo" class="form-control"
+                                                    placeholder="Cargo" required>
+                                            </div>
+        
+                                     
+                                    
                                     <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
                                         <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email') }}" required>
@@ -61,7 +73,7 @@
                                     </div>
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
+                                        <button type="submit" class="btn btn-success mt-4" onclick="myFunction()">{{ __('Cadastrar') }}</button>
                                     </div>
                                 </div>
                             </form>
@@ -71,4 +83,9 @@
             </div>
         </div>
     </div>
+    
 @endsection
+
+@push('scripts')
+<script src={{URL::asset("js/funcionario.js")}}> </script>
+@endpush

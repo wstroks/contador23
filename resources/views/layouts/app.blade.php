@@ -122,9 +122,14 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- Sharrre libray -->
     <script src="{{ asset('paper') }}/demo/jquery.sharrre.js"></script>
     
+    
     @stack('scripts')
 
     @include('layouts.navbars.fixed-plugin-js')
 </body>
+
+
+
+
 
 </html>

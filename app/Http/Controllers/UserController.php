@@ -69,7 +69,9 @@ class UserController extends Controller
                 ->except([$hasPassword ? '' : 'password']
         ));
 
-        return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
+       return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
+
+      // return redirect()->route('user.index');
     }
 
     /**
@@ -82,6 +84,8 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
+       return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
+
+       // return redirect()->route('user.index');
     }
 }

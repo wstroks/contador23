@@ -19,11 +19,19 @@
                 </a>
             </li>
            
-            
+            <!--
             <li class="{{ $elementActive == 'cadastro-funcionario' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'cadastro-funcionario') }}">
                     <i class="nc-icon nc-single-02"></i>
                     <p>{{ __('Cadastro') }}</p>
+                </a>
+            </li> -->
+
+            <li class="{{ $elementActive == 'user' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'user') }}">
+                    <i  class="nc-icon nc-single-02"></i>
+                    <p>{{ __('Cadastro') }}</p>
+                    
                 </a>
             </li>
             
@@ -68,7 +76,7 @@
                     <p>{{ __('Upgrade to PRO') }}</p>
                 </a>
             </li> !-->
-
+            <!--
             
             <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
                 <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
@@ -86,15 +94,10 @@
                                 <span class="sidebar-normal">{{ __(' Perfil Usuário') }}</span>
                             </a>
                         </li>
-                        <li class="{{ $elementActive == 'user' ? 'active' : '' }}">
-                            <a href="{{ route('page.index', 'user') }}">
-                                <span class="sidebar-mini-icon">{{ __('MU') }}</span>
-                                <span class="sidebar-normal">{{ __('Perfil') }}</span>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </div>
-            </li>
+            </li> -->
             @endif
 
             @if(Auth::guard('web')->check() && Auth::guard('web')->user()->email!="adm@gmail.com")
@@ -119,7 +122,7 @@
 @push('scripts')
 <!-- add pra notificação funcionario não bugar -->
 @if(Auth::guard('web')->check() && Auth::guard('web')->user()->email=="adm@gmail.com")
-<script src="js/funcionario/contadorNotifica.js"> </script>
+<script src={{URL::asset("js/funcionario/contadorNotifica.js")}}> </script>
 @endif
 
 @endpush

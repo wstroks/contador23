@@ -1,15 +1,19 @@
-document.getElementById('form_funcionario').addEventListener('submit', submitForm);
+//document.getElementById('form_funcionario').addEventListener('submit', submitForm);
 var database = firebase.database();
 const rooRef=database.ref('funcionario');
+/*
+var btn = document.getElementById('btn');
+btn.addEventListener('click', function () {
+    database.ref('funcionario/').child().equalTo('aa').remove();
+  });*/
 
-
-
-function submitForm(e){
+/*function submitForm(e){
+    console.log("aui");
     e.preventDefault();
-    inHTML("ex-table","");
-    var Nome = getInputVal('Nome');
+   // inHTML("ex-table",""); a
+    var Nome = getInputVal('input-name');
     var Cargo = getInputVal('Cargo');
-    var Email = getInputVal('Email');
+    var Email = getInputVal('input-email');
     var Horas =0;
     var Minutos =0;
     var tarefasComprindas = 0;
@@ -20,6 +24,57 @@ function submitForm(e){
     console.log(Nome +" " + Cargo);
 
     saveFuncionario(Nome, Cargo, Email, Horas,Minutos, tarefasAtrasadas,tarefasComprindas,tarefasemAndamento);
+}*/
+
+function myFunction(){
+    var Nome = document.getElementById('input-name').value;
+    var Cargo = document.getElementById('Cargo').value;
+    var Email = document.getElementById('input-email').value;
+    var Horas =0;
+    var Minutos =0;
+    var tarefasComprindas = 0;
+    var tarefasAtrasadas=0;
+    var tarefasemAndamento=0;
+
+
+    console.log(Nome +" " + Cargo);
+
+    saveFuncionario(Nome, Cargo, Email, Horas,Minutos, tarefasAtrasadas,tarefasComprindas,tarefasemAndamento);
+}
+
+function ID(nomes){
+    //const re= database.ref('funcionario').child("Nome").equalTo('aa');
+    var rem= nomes;
+    console.log(' '+ rem);
+
+    var reference = database.ref('funcionario');    
+        reference.on('value',function(datas){
+            var data = datas.val();
+            $.each(data, function(nodo, value) {
+                if(value.Nome==rem){
+                    database.ref('funcionario/'+nodo).remove();
+                }
+                    
+            });       
+        });
+    
+/*
+    $('#tabelaBanco tbody tr').each(function () {
+        // Recuperar todas as colunas da linha percorida
+        var colunas = $(this).children();
+
+        
+        // Adicionar o objeto pedido no array
+        //pedidos.push(pedido);
+
+       
+        var rem= $(colunas[0]).text();
+        console.log(' '+ rem);
+        
+    });*/
+    
+   
+
 }
 
 function getInputVal(id){
@@ -42,7 +97,7 @@ function saveFuncionario(Nome, Cargo, Email, Horas,Minutos,tarefasAtrasadas,tare
     });
     //window.location.reload();
     
-    alert('Funcionário cadastrado!');
+   // alert('Funcionário cadastrado!');
     
 }
 /*
@@ -82,7 +137,7 @@ firebase.database().ref('funcionario').orderByChild('Nome').on('value', function
 
 function removeTask(key){
     if(confirm("Tem certeza que deseja remover?")){
-        inHTML("ex-table","");
+        //inHTML("ex-table",""); a
         database.ref('funcionario/'+key).remove();
         
         //window.location.reload();
@@ -99,7 +154,7 @@ function value(request){
   function printHTML(request,response){
     return document.getElementById(request).innerHTML+=response;
   }
-  
+  /*
   var reference = database.ref('funcionario');    
   reference.on('value',function(datas){
       var data = datas.val();
@@ -112,7 +167,7 @@ function value(request){
   function table(Nome, Cargo, Email, key){
     return '<tr><td>'+Nome+'</td><td>'+Cargo+'</td><td>'+Email+'</td>'+
     '<td class="text-right"><button type="submit" class="btn btn-info btn-round" onclick="removeTask(\''+key+'\')" > Excluir</button></td> </tr>';
-  }
+  }*/
 
 
 
