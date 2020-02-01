@@ -11,3 +11,6 @@ var firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+
+  //82870945361-seds3lcjskehb1e4hvuiivbrn5r6vs3h.apps.googleusercontent.com
+  //T4OmBB__uuyImj2iFwsrbK6q

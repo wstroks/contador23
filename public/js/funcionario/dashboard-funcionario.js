@@ -150,6 +150,27 @@ function  dadosAtrasadas(tarefasAtrasadas){
  }
 
  function notificaTask(Titulo, Nome, Descritivo){
+    var verifica =0;
+
+    var reference2 = database.ref('notifica');    
+    reference2.on('value',function(datas){
+   // var filtro = document.getElementById('usuarioNome').innerText;
+    //inHTML("ex-table100","");
+    //inHTML("notificaContador","");
+    //inHTML("notificaContador","");
+    contador=0;
+    //console.log(filtro)
+    var data = datas.val();
+    $.each(data, function(nodo, value) {
+        console.log("verifica1 " + verifica);
+        if(value.Nome==Nome && value.Titulo ==Titulo && value.Descritivo){
+           console.log("verifica2 " + verifica);
+           verifica=1;
+        }
+    });       
+});
+console.log("verifica3 " + verifica);
+  if(verifica=!1 || contador==0){
     const rooRef=database.ref('notifica');
     const autoId= rooRef.push().key;
     rooRef.child(autoId).set({
@@ -160,5 +181,8 @@ function  dadosAtrasadas(tarefasAtrasadas){
         
     });
 
-    alert('Notificação enviada aguarde o supervisor!');
- }
+    alert('Notificação enviada, aguarde o supervisor!');}
+    else{
+        alert('Notificação já enviada ao supervisor. Aguarde!')
+    }
+}

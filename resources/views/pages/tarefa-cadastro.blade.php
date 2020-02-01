@@ -3,7 +3,7 @@
 'elementActive' => 'tarefa-cadastro'
 ])
 @section('content')
-@if(Auth::guard('web')->check() && Auth::guard('web')->user()->email=="adm@gmail.com")
+@if(Auth::guard('web')->check() && Auth::guard('web')->user()->name=="Supervisor Onix")
 <div class="content">
     <div class="row">
         <div class="col-md-12">

@@ -11,7 +11,7 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            @if(Auth::guard('web')->check() && Auth::guard('web')->user()->email=="adm@gmail.com")
+            @if(Auth::guard('web')->check() && Auth::guard('web')->user()->name=="Supervisor Onix")
             <li class="{{ $elementActive == 'dashboard' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'dashboard') }}">
                     <i class="nc-icon nc-bank"></i>
@@ -100,7 +100,7 @@
             </li> -->
             @endif
 
-            @if(Auth::guard('web')->check() && Auth::guard('web')->user()->email!="adm@gmail.com")
+            @if(Auth::guard('web')->check() && Auth::guard('web')->user()->name!="Supervisor Onix")
             <li class="{{ $elementActive == 'dashboard-funcionario' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'dashboard-funcionario') }}">
                     <i class="nc-icon nc-bank"></i>
@@ -121,8 +121,9 @@
 
 @push('scripts')
 <!-- add pra notificação funcionario não bugar -->
-@if(Auth::guard('web')->check() && Auth::guard('web')->user()->email=="adm@gmail.com")
-<script src={{URL::asset("js/funcionario/contadorNotifica.js")}}> </script>
+@if(Auth::guard('web')->check() && Auth::guard('web')->user()->name=="Supervisor Onix")
+<!--<script src={{URL::asset("js/funcionario/contadorNotifica.js")}}> </script> -->
+<script src={{URL::asset("js/funcionario/notifica.js")}}> </script>
 @endif
 
 @endpush
