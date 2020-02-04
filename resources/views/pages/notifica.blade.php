@@ -113,7 +113,7 @@
 @push('scripts')
 
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
-<script src="js/funcionario/notifica.js"> </script>
+<script src={{URL::asset("js/funcionario/notifica.js")}}>
 
 
 @endpush

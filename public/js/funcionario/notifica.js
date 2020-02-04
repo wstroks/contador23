@@ -21,6 +21,7 @@ reference.on('value',function(datas){
     $.each(data, function(nodo, value) {
         //if(filtro==value.Nome){
             var sendData = table(value.Titulo,value.Nome,value.Descritivo, nodo);
+            console.log(" not "+ value.Descritivo + " n "+ value.Nome);
             contador+=1;
             console.log(contador);
             var sendData1 = contadorNotificação(contador);
@@ -33,7 +34,7 @@ reference.on('value',function(datas){
 function table(Titulo, Nome, Descritivo,key){
   
   return '<tr><td>'+Titulo+'</td><td>'+Descritivo+'</td><td>'+Nome+'</td>'+
-  '<td class="text-right"><button  type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#exampleModalCenter" onclick="acessar(\''+Titulo+'\',\''+Descritivo+'\',\''+Nome+'\',\''+key+'\')" > Acessar</button></td>'+
+  '<td class="text-right"><button  type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#exampleModalCenter" onclick="acessar(\''+Titulo+'\',\''+Nome+'\',\''+Descritivo+'\',\''+key+'\')" > Acessar</button></td>'+
   '<td class="text-right"><button  type="submit" class="btn btn-danger btn-round" onclick="removeTask(\''+key+'\')" > Excluir</button></td>';
   
 }
@@ -44,8 +45,10 @@ function acessar(Titulo, Nome, Descritivo,key){
     reference3.on('value',function(datas){
         var data = datas.val();
         inHTML('ex-table5',"");
+       
         $.each(data, function(nodo, value) {
-                if(value.Nome==Nome && value.Titulo==Titulo && value.Descritivo && value.Status!="Finalizado"){
+            console.log("teste "+ " NOme1" + Nome + " nome2 " +value.Nome+ " d2 " + value.Descritivo + " d1 " + Descritivo);
+                if(value.Nome==Nome && value.Titulo==Titulo && value.Descritivo==Descritivo && value.Status!="Finalizado"){
                 var sendData = tablemodal(value.Titulo,value.Nome,value.Descritivo,value.dataInicio,value.horasInicio,value.estimativaHoras,value.Status,value.estimativadataFinalizar,value.estimativahorasFinalizar,nodo,key2);
                 printHTML('ex-table5',sendData);}
         });       
@@ -60,7 +63,7 @@ function tablemodal(Titulo, Nome, Descritivo, dataInicio, horasInicio,estimativa
 
   
 function finalizarTask(key,key2){
-    if(confirm("Tem certeza que deseja remover?")){
+    if(confirm("Tem certeza que Finalizar?")){
         inHTML("ex-table100","");
         database.ref('notifica/'+key2).remove();
         

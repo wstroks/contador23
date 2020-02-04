@@ -38,9 +38,7 @@ reference.on('value',function(datas){
 function contadorNotificação(contador2){
     inHTML("notificaContador","")
     console.log('numero ' + contador2);
-    if(contador2==null){
-        return 'Notificação ';
-    }
+    
     if(contador2==0){
         return 'Notificação';
     }if(contador2==1){

@@ -122,8 +122,8 @@
 @push('scripts')
 <!-- add pra notificação funcionario não bugar -->
 @if(Auth::guard('web')->check() && Auth::guard('web')->user()->name=="Supervisor Onix")
-<!--<script src={{URL::asset("js/funcionario/contadorNotifica.js")}}> </script> -->
-<script src={{URL::asset("js/funcionario/notifica.js")}}> </script>
+<script src={{URL::asset("js/funcionario/contadorNotifica.js")}}> </script> 
+<!--<script src={{URL::asset("js/funcionario/notifica.js")}}> </script> -->
 @endif
 
 @endpush

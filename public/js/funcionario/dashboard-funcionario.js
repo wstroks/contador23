@@ -144,7 +144,7 @@ function  dadosAtrasadas(tarefasAtrasadas){
    
     return '<tr><td>'+Titulo+'</td><td>'+Nome+'</td><td>'+Descritivo+'</td>'+
     '<td>'+dataInicio+' '+horasInicio+' </td> <td>'+estimativaHoras+'</td> <td>'+estimativadataFinalizar+' '+estimativahorasFinalizar+'</td>  <td>'+Status +'</td>'+
-    '<td class="text-right"><button  type="submit" class="btn btn-success btn-round" onclick="notificaTask(\''+Titulo+'\',\''+Descritivo+'\',\''+Nome+'\')" >Notificar termino</button></td></tr>';
+    '<td class="text-right"><button  type="submit" class="btn btn-success btn-round" onclick="notificaTask(\''+Titulo+'\',\''+Nome +'\',\''+Descritivo+'\')" >Notificar termino</button></td></tr>';
   
 
  }
@@ -164,17 +164,17 @@ function  dadosAtrasadas(tarefasAtrasadas){
     $.each(data, function(nodo, value) {
         console.log("verifica1 " + verifica);
         if(value.Nome==Nome && value.Titulo ==Titulo && value.Descritivo){
-           console.log("verifica2 " + verifica);
+           console.log("verifica2 " + + verifica + " Nome"+ Nome +" Descrito "+ Descritivo + " titulo " + Titulo);
            verifica=1;
         }
     });       
 });
-console.log("verifica3 " + verifica);
+console.log("verifica3 " + verifica + " Nome"+ Nome +" Descrito "+ Descritivo + " titulo " + Titulo);
   if(verifica=!1 || contador==0){
     const rooRef=database.ref('notifica');
     const autoId= rooRef.push().key;
     rooRef.child(autoId).set({
-        Nome: Nome,
+        Nome: Nome  ,
         Titulo: Titulo,
         Descritivo: Descritivo,
         
