@@ -38,8 +38,9 @@ function myFunction(){
 
 
     console.log(Nome +" " + Cargo);
-
+    if("Supervisor Onix"!=Nome){
     saveFuncionario(Nome, Cargo, Email, Horas,Minutos, tarefasAtrasadas,tarefasComprindas,tarefasemAndamento);
+}
 }
 
 function ID(nomes){
