@@ -15,7 +15,7 @@
                                     <h3 class="mb-0">{{ __('Lista de Funcionários') }}</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Adicionar Funcionário') }}</a>
+                                    <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Adicionar Usuários') }}</a>
                                 </div>
                             </div>
                         </div>

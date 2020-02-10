@@ -16,7 +16,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table" >
+                        <table id="example" class="table" >
                             <thead class=" text-primary">
                                 <th scope="col">
                                     Titulo
@@ -70,6 +70,9 @@
 
 @push('scripts')
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
 <script src="js/tarefa-finalizada.js"> </script>
 
 @endpush

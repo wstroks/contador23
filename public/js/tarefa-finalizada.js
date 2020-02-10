@@ -72,6 +72,10 @@ reference.on('value',function(datas){
 });
 
 function table(Titulo, Nome, Descritivo, dataInicio, horasInicio,estimativaHoras,Status,estimativadataFinalizar,estimativahorasFinalizar,dataTermino,horasTermino){
-  return '<tr><td>'+Titulo+'</td><td>'+Nome+'</td><td>'+Descritivo+'</td>'+
+  return '<td>'+Titulo+'</td><td>'+Nome+'</td><td>'+Descritivo+'</td>'+
   '<td>'+dataInicio+' '+horasInicio+' </td> <td>'+estimativaHoras+'</td> <td>'+estimativadataFinalizar+' '+estimativahorasFinalizar+'</td> <td>'+dataTermino+' '+ horasTermino+'</td> <td>'+Status +'</td>';
 }
+
+
+
+

@@ -5,6 +5,20 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- DATATABLES -->
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<!-- RESPONSIVENESS -->
+<script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+<!-- DATETIMEPICKER -->
+<script src="https://rawgit.com/smalot/bootstrap-datetimepicker/master/js/bootstrap-datetimepicker.min.js"></script>
+<!-- DATATABLES FREE EDITOR -->
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.4/js/dataTables.select.min.js"></script>
+
+
+
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
